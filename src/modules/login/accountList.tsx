@@ -1,0 +1,37 @@
+const generateIdToken = (): string => {
+    const idTokenBytes = new Uint8Array(16);
+    crypto.getRandomValues(idTokenBytes);
+    return Array.from(idTokenBytes)
+      .map((byte) => byte.toString(16).padStart(2, '0'))
+      .join('');
+  };
+  
+  const userAccountsList = [
+    {
+      id: '1',
+      idToken: generateIdToken(),
+      userName: 'admin',
+      password: '738791c89cea36ffd51ad38421bf7622',
+      description: 'Lerne wie eine HTML Seite strukturiert ist',
+      licenseDuration: '2029-08-01',
+    },
+    {
+      id: '2',
+      idToken: generateIdToken(),
+      userName: 'old',
+      password: 'e67c10a4c8fbfc0c400e047bb9a056a1',
+      description: 'Lerne wie eine HTML Seite strukturiert ist',
+      licenseDuration: '2022-08-01',
+    },
+    {
+        id: '2',
+        idToken: generateIdToken(),
+        userName: 'WebProgrammierungStudenten2023',
+        password: 'f8b2b6f48af1148eb8d1d2e385d547d3',
+        description: 'Willkommen zum Account für die Webentwicklungslernplattform der DHBW-Studenten! Hier haben Sie Zugriff auf eine speziell für Ihre Webentwicklungsvorlesung entwickelte Plattform. Mit interaktiven Lektionen, praxisorientierten Tutorials und einem Fortschrittsdashboard können Sie Ihre Webentwicklungsfähigkeiten verbessern. Entdecken Sie die spannende Welt der Webentwicklung und entwickeln Sie sich weiter. Wir freuen uns, Sie auf Ihrem Weg zur erfolgreichen Webentwicklung zu begleiten!        ',
+        licenseDuration: '2023-08-01',
+      },
+  ];
+  
+  export default userAccountsList;
+  

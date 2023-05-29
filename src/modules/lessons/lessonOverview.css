@@ -1,0 +1,67 @@
+.lesson-overview-container {
+    padding-top: 5vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-bottom: 5vw;
+
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .lesson-overview-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  .lesson-link {
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .lesson-card {
+    height:100% !important;
+    flex-basis: 30%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .lesson-card .card-footer {
+    background-color: #f8f9fa;
+    border-top: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.75rem;
+  }
+  
+  .lesson-card .badge {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+  
+  .lesson-card:hover {
+    transform: translateY(-5px);
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 767px) {
+    .lesson-overview-container {
+      padding: 3vw;
+    }
+  
+    .lesson-card {
+      flex-basis: 100%;
+    }
+  }
+  

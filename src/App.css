@@ -1,0 +1,28 @@
+.App {
+  text-align: center;
+}
+
+
+.card-uebung{
+  margin:5vw;
+  width: 90vw;
+}
+.custom-container {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.after-login-container {
+background: linear-gradient(to bottom, #84fab0, #8fd3f4);
+width: 100vw;
+height: 94vh;
+padding-top: 5vw;
+padding-left: 5vw;
+padding-right: 5vw;
+overflow: auto;
+padding-bottom: 5vw;
+
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+}
