@@ -21,6 +21,7 @@ const CookieConsentBanner: React.FC = () => {
     localStorage.removeItem('progress-saving-enabled');
     localStorage.removeItem('username-saving-enabled');
     setIsPopupVisible(false);
+    setIsCookieAccepted(true);
   };
 
   const onSaveSettings = () => {

@@ -5,6 +5,10 @@ import FooterComponent from '../../base/footerComponent';
 import './passwordDialog.css';
 import NavbarComponent from '../../base/navbarComponent';
 import { MD5 } from 'crypto-js';
+import lessonsList from '../app_configuration/list_lessons';
+import { welcome_headline, welcome_description } from '../app_configuration/app_texts'; 
+
+
 
 interface UserAccount {
   id: string;
@@ -34,9 +38,11 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
 
     // Convert the entered password to MD5 hash
     const passwordHash = MD5(password).toString();
+    const usernameHash = MD5(userName).toString();
+
 
     const matchedUser = userAccountsList.find(
-      user => user.userName === userName && user.password === passwordHash
+      user => user.userName === usernameHash && user.password === passwordHash
     );
 
     if (matchedUser) {
@@ -52,7 +58,9 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
           localStorage.setItem('idToken', matchedUser.idToken);
         }
 
-        navigate('/grundlagen-kurse');
+        const firstLessonCategory = lessonsList[0].category;
+        navigate(`/${firstLessonCategory.toLowerCase().replace(/\s/g, '-')}`);
+    
       }
     } else {
       setWrongAttempts(prevAttempts => prevAttempts + 1);
@@ -96,11 +104,9 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
       <NavbarComponent disabled={true} />
       <div className="auth-container">
         <div className="description" style={{ textAlign: 'left' }}>
-          <h3>Willkommen zur Webentwicklungslernplattform!</h3>
+          <h3>{welcome_headline}</h3>
           <p>
-            Hier finden Sie Unterrichtseinheiten über HTML, CSS und allgemeine Webentwicklung. Die Plattform bietet
-            zahlreiche Coding-Übungen mit einem Live-Editor und einer Überprüfung der Aufgaben. Zusätzlich gibt es ein
-            Dashboard, das Ihren Lernfortschritt anzeigt.
+             { welcome_description}
           </p>
           <p>Viel Spaß beim Lernen!</p>
         </div>
@@ -109,7 +115,7 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
             <div className="auth-card-container">
               <Card className="auth-card">
                 <Card.Body>
-                  <Card.Title>Password Eingabe</Card.Title>
+                  <Card.Title>Login</Card.Title>
                   <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicUsername">
                       <Form.Control type="text" placeholder="Benutzername" name="username" className="username-input" />
