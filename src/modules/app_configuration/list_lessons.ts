@@ -128,7 +128,7 @@ const lessons = [
     id: '13',
     title: 'Einführung in die Versionskontrolle und Git',
     description: 'Verstehe die Bedeutung der Versionskontrolle in der Softwareentwicklung und lerne die Grundlagen von Git',
-    content: '<strong>Was ist Versionskontrolle?</strong><br /><br />Die Versionskontrolle ist ein zentraler Aspekt der modernen Softwareentwicklung. Sie ermöglicht die Aufzeichnung von Änderungen an einer Datei oder einem Satz von Dateien im Laufe der Zeit. Dadurch kannst du zu spezifischen Versionen zurückkehren, um frühere Änderungen nachzuvollziehen oder Fehler zu beheben. Die Versionskontrolle ist besonders nützlich, wenn mehrere Personen an einem Projekt arbeiten, da sie Transparenz darüber bietet, wer was geändert hat und wann. Sie erleichtert auch das Zusammenführen von Änderungen, wenn mehrere Personen gleichzeitig an denselben Dateien arbeiten.<br /><br /><strong>Git - Ein leistungsstarkes Versionskontrollsystem</strong><br /><br />Git ist das am weitesten verbreitete Versionskontrollsystem. Es zeichnet sich dadurch aus, dass es ein verteiltes Versionskontrollsystem ist. Das bedeutet, dass jede Kopie eines Git-Repositories den vollständigen Verlauf aller Änderungen enthält. Im Gegensatz dazu speichern zentralisierte Versionskontrollsysteme die Historie auf einem zentralen Server.<br /><br />Git bietet eine Vielzahl von Funktionen, die die Arbeit mit Versionskontrolle flexibel und effizient machen. Dazu gehören unter anderem:<br /><br /><strong>Branching und Merging:</strong> Mit Git kannst du Branches erstellen, um an verschiedenen Features oder Bugfixes zu arbeiten, ohne den Hauptcode zu beeinträchtigen. Später können diese Branches einfach mit dem Hauptcode zusammengeführt werden.<br /><br /><strong>Commits:</strong> Git speichert Änderungen als Commits ab, die eine logische Einheit von Änderungen darstellen. Jeder Commit enthält eine Beschreibung und Informationen darüber, wer die Änderungen vorgenommen hat.<br /><br /><strong>Repositorien:</strong> Git organisiert Dateien und deren Historie in sogenannten Repositorien. Ein Repository kann lokal auf deinem Computer oder remote auf einem Server gespeichert werden.<br /><br /><strong>Arbeiten mit Git und GitHub</strong><br /><br />Es ist wichtig zu beachten, dass Git und GitHub zwei verschiedene Dinge sind. Git ist das Versionskontrollsystem selbst, während GitHub ein webbasierter Hosting-Dienst für Git-Repositories ist. GitHub bietet eine webbasierte Benutzeroberfläche und zusätzliche Funktionen wie Bug-Tracking, Aufgabenmanagement und Wikis für jedes Projekt.<br /><br />Um mit Git zu arbeiten, kannst du verschiedene Befehle verwenden. Hier ist eine Beispielanleitung für den Umgang mit einem Git-Repository:<br /><br /><strong>1. Git-Repository herunterladen/klonen:</strong><br /><br />Verwende den Befehl <code>git clone</code>, um ein vorhandenes Git-Repository auf deinem lokalen Computer zu kopieren. Beispiel: <code>git clone https://github.com/ChristianScheub/Web ProgrammierungVorlesung.git Documents/SchuleDHBW/DHBW/Dozen t/Dozent_Sem2/GitRepo_Clone</code><br /><br /><strong>2. Öffnen des Ordners im Git-Terminal:</strong><br /><br />Verwende den Befehl <code>cd</code>, um in den heruntergeladenen Ordner zu wechseln. Beispiel: <code>cd Documents/SchuleDHBW/DHBW/Dozen t/Dozent_Sem2/GitRepo_Clone</code><br /><br /><strong>3. Anzeigen der Änderungen im Repository:</strong><br /><br />Verwende den Befehl <code>git status</code>, um den Status der Änderungen im Repository anzuzeigen. Beispiel: <code>git status</code><br /><br /><strong>4. Hinzufügen der Änderungen:</strong><br /><br />Verwende den Befehl <code>git add</code>, um Änderungen zur Staging-Area hinzuzufügen, um sie für den Commit vorzubereiten. Beispiel: <code>git add README.md</code><br /><br /><strong>5. Commit:</strong><br /><br />Verwende den Befehl <code>git commit -m Nachricht</code>, um die vorbereiteten Änderungen in das Repository zu übernehmen und einen Commit mit einer beschreibenden Nachricht zu erstellen. Beispiel: <code>git commit -m Änderung der ReadMe-Datei</code><br /><br /><strong>6. Push der Änderungen:</strong><br /><br />Verwende den Befehl <code>git push origin branch-name</code>, um die lokal durchgeführten Änderungen auf den Remote-Server hochzuladen. Du musst dich möglicherweise mit deinen Anmeldedaten authentifizieren, bevor der Push durchgeführt wird. Beispiel: <code>git push origin main</code><br /><br />Diese Schritte sollen nur als Beispiel dienen und können je nach Situation variieren. Es gibt viele weitere Git-Befehle und Funktionen, die dir helfen können, effektiv mit Versionskontrolle umzugehen.<br /><br />Das Erlernen von Git und der Versionskontrolle im Allgemeinen ist eine wertvolle Fähigkeit für jeden Entwickler. Es ermöglicht eine effiziente Zusammenarbeit, erleichtert das Nachverfolgen von Änderungen und erleichtert das Zurückkehren zu früheren Versionen, falls erforderlich.',
+    content: '<strong>Was ist Versionskontrolle?</strong><br /><br />Die Versionskontrolle ist ein zentraler Aspekt der modernen Softwareentwicklung. Sie ermöglicht die Aufzeichnung von Änderungen an einer Datei oder einem Satz von Dateien im Laufe der Zeit. Dadurch kannst du zu spezifischen Versionen zurückkehren, um frühere Änderungen nachzuvollziehen oder Fehler zu beheben. Die Versionskontrolle ist besonders nützlich, wenn mehrere Personen an einem Projekt arbeiten, da sie Transparenz darüber bietet, wer was geändert hat und wann. Sie erleichtert auch das Zusammenführen von Änderungen, wenn mehrere Personen gleichzeitig an denselben Dateien arbeiten.<br /><br /><strong>Git - Ein leistungsstarkes Versionskontrollsystem</strong><br /><br />Git ist das am weitesten verbreitete Versionskontrollsystem. Es zeichnet sich dadurch aus, dass es ein verteiltes Versionskontrollsystem ist. Das bedeutet, dass jede Kopie eines Git-Repositories den vollständigen Verlauf aller Änderungen enthält. Im Gegensatz dazu speichern zentralisierte Versionskontrollsysteme die Historie auf einem zentralen Server.<br /><br />Git bietet eine Vielzahl von Funktionen, die die Arbeit mit Versionskontrolle flexibel und effizient machen. Dazu gehören unter anderem:<br /><br /><strong>Branching und Merging:</strong> Mit Git kannst du Branches erstellen, um an verschiedenen Features oder Bugfixes zu arbeiten, ohne den Hauptcode zu beeinträchtigen. Später können diese Branches einfach mit dem Hauptcode zusammengeführt werden.<br /><br /><strong>Commits:</strong> Git speichert Änderungen als Commits ab, die eine logische Einheit von Änderungen darstellen. Jeder Commit enthält eine Beschreibung und Informationen darüber, wer die Änderungen vorgenommen hat.<br /><br /><strong>Repositorien:</strong> Git organisiert Dateien und deren Historie in sogenannten Repositorien. Ein Repository kann lokal auf deinem Computer oder remote auf einem Server gespeichert werden.<br /><br /><strong>Arbeiten mit Git und GitHub</strong><br /><br />Es ist wichtig zu beachten, dass Git und GitHub zwei verschiedene Dinge sind. Git ist das Versionskontrollsystem selbst, während GitHub ein webbasierter Hosting-Dienst für Git-Repositories ist. GitHub bietet eine webbasierte Benutzeroberfläche und zusätzliche Funktionen wie Bug-Tracking, Aufgabenmanagement und Wikis für jedes Projekt.<br /><br />Um mit Git zu arbeiten, kannst du verschiedene Befehle verwenden. Hier ist eine Beispielanleitung für den Umgang mit einem Git-Repository:<br /><br /><strong>1. Git-Repository herunterladen/klonen:</strong><br /><br />Verwende den Befehl git clone, um ein vorhandenes Git-Repository auf deinem lokalen Computer zu kopieren. Beispiel: git clone https://github.com/ChristianScheub/Web ProgrammierungVorlesung.git Documents/SchuleDHBW/DHBW/Dozen t/Dozent_Sem2/GitRepo_Clone<br /><br /><strong>2. Öffnen des Ordners im Git-Terminal:</strong><br /><br />Verwende den Befehl cd, um in den heruntergeladenen Ordner zu wechseln. Beispiel: cd Documents/SchuleDHBW/DHBW/Dozen t/Dozent_Sem2/GitRepo_Clone<br /><br /><strong>3. Anzeigen der Änderungen im Repository:</strong><br /><br />Verwende den Befehl git status, um den Status der Änderungen im Repository anzuzeigen. Beispiel: git status<br /><br /><strong>4. Hinzufügen der Änderungen:</strong><br /><br />Verwende den Befehl git add, um Änderungen zur Staging-Area hinzuzufügen, um sie für den Commit vorzubereiten. Beispiel: git add README.md oder git add --all<br /><br /><strong>5. Commit:</strong><br /><br />Verwende den Befehl git commit -m Nachricht, um die vorbereiteten Änderungen in das Repository zu übernehmen und einen Commit mit einer beschreibenden Nachricht zu erstellen. Beispiel: git commit -m Änderung der ReadMe-Datei<br /><br /><strong>6. Push der Änderungen:</strong><br /><br />Verwende den Befehl git push origin branch-name, um die lokal durchgeführten Änderungen auf den Remote-Server hochzuladen. Du musst dich möglicherweise mit deinen Anmeldedaten authentifizieren, bevor der Push durchgeführt wird. Beispiel: git push origin main<br /><br />Diese Schritte sollen nur als Beispiel dienen und können je nach Situation variieren. Es gibt viele weitere Git-Befehle und Funktionen, die dir helfen können, effektiv mit Versionskontrolle umzugehen.<br /><br />Das Erlernen von Git und der Versionskontrolle im Allgemeinen ist eine wertvolle Fähigkeit für jeden Entwickler. Es ermöglicht eine effiziente Zusammenarbeit, erleichtert das Nachverfolgen von Änderungen und erleichtert das Zurückkehren zu früheren Versionen, falls erforderlich.',
     exercise: '',
     correctAnswer: '',
     language: '',
@@ -158,19 +158,19 @@ const lessons = [
     id: '16',
     title: 'HTML Struktur',
     description: 'Lerne wie eine HTML Seite strukturiert ist',
-    content: 'HTML ist die Grundlage jeder Webseite. HTML-Dokumente beginnen mit der Dokumenttyp-Deklaration, die für HTML5 einfach `<!DOCTYPE html>` ist. Der gesamte Inhalt der Seite wird dann innerhalb des `<html>`-Tags platziert. Jede HTML-Seite besteht aus zwei Hauptteilen: dem `<head>` und dem `<body>`. Der Kopf enthält Informationen über das Dokument und Anweisungen für den Browser, während der Körper den eigentlichen Inhalt der Seite enthält, der den Benutzern angezeigt wird. Es ist wichtig, die Struktur einer HTML-Seite zu verstehen, da sie die Grundlage für das Erstellen von Webinhalten bildet.',
-    exercise: 'Erstelle ein einfaches HTML-Dokument mit einer Dokumenttyp-Deklaratiom sowie einem Kopf- und Körperbereich ohne Inhalt.',
+    content: 'HTML ist die Grundlage jeder Webseite. HTML-Dokumente beginnen mit der Dokumenttyp-Deklaration, die für HTML5 einfach `<!DOCTYPE html>` ist. Der gesamte Inhalt der Seite wird dann innerhalb des `<html>`-Tags platziert. Jede HTML-Seite besteht aus zwei Hauptteilen: dem `<head>` und dem `<body>`. <br /> Der Kopf enthält Informationen über das Dokument und Anweisungen für den Browser, während der Körper den eigentlichen Inhalt der Seite enthält, der den Benutzern angezeigt wird. Es ist wichtig, die Struktur einer HTML-Seite zu verstehen, da sie die Grundlage für das Erstellen von Webinhalten bildet.',
+    exercise: 'Erstelle ein einfaches HTML-Dokument mit einer Dokumenttyp-Deklaration sowie einem Kopf- und Körperbereich ohne Inhalt.',
     correctAnswer: '<!DOCTYPE html><html><head></head><body></body></html>',
     language: 'html',
     category: 'HTML Einheiten',
-  },
+  },  
   {
     id: '17',
     title: 'HTML Head',
     description: 'Lerne, was in den Kopf einer HTML-Seite gehört',
     content: 'Der Kopf einer HTML-Seite, dargestellt durch das `<head>`-Tag, enthält Informationen über das Dokument, die nicht direkt auf der Seite angezeigt werden. Dies kann den Titel der Seite, Metatags, Links zu Stylesheets und mehr umfassen. Der Titel der Seite wird im `<title>`-Tag angegeben und wird auf der Registerkarte des Browsers angezeigt. Metatags bieten zusätzliche Informationen über die Seite. Zum Beispiel definiert das Metatag `<meta charset="UTF-8">` die Zeichencodierung der Seite, während das Meta-Tag `<meta name="description" content="Beschreibung der Seite">` eine Beschreibung der Webseite für Suchmaschinen bereitstellt. Andere Metatags können den Autor der Seite, die Sprache der Webseite, Anweisungen für Webcrawler und mehr angeben. Links zu Stylesheets und Skripten sind ebenfalls ein wesentlicher Bestandteil des Kopfes. CSS-Stylesheets werden in der Regel mit dem `<link>`-Tag verlinkt und definieren das Aussehen der Webseite. JavaScript-Dateien, die das Verhalten der Seite steuern, können mit dem `<script>`-Tag eingebunden werden. Es ist wichtig zu beachten, dass obwohl der Inhalt des Kopfbereichs normalerweise nicht sichtbar für Benutzer ist, er eine wichtige Rolle für die Zugänglichkeit, die Suchmaschinenoptimierung und die allgemeine Benutzererfahrung spielt. Eine korrekt ausgefüllte Kopfzeile kann dazu beitragen, dass Ihre Webseite korrekt angezeigt wird, besser in Suchmaschinen rankt und einfacher von Benutzern und Suchmaschinen verstanden wird.',
-    exercise: 'Erstellen Sie den Kopfbereich einer HTML-Seite mit dem Titel "Meine Webseite" und einem Link zu dem Stylesheet in dem gleichen Ordner wie die HTML Datei mit dem Namen "style.css".',
-    correctAnswer: '<head><title>Meine Webseite</title><link rel="stylesheet" href="styles.css"></head>',
+    exercise: 'Erstelle eine Dokumenttyp-Deklaration, Head und Body einer HTML-Seite. Füge zudem den Titel "Meine Webseite" an der richtigen Stelle hinzu',
+    correctAnswer: '<!DOCTYPE html><html><head><title>Meine Webseite</title></head><body></body></html>    ',
     language: 'html',
     category: 'HTML Einheiten',
   },
@@ -179,8 +179,8 @@ const lessons = [
     title: 'HTML Body',
     description: 'Lerne, was in den Body einer HTML-Seite gehört',
     content: 'Der Körper einer HTML-Seite, repräsentiert durch das `<body>`-Tag, enthält den eigentlichen Inhalt der Seite, der den Benutzern angezeigt wird. Dies kann Text, Bilder, Links, Tabellen, Listen und vieles mehr umfassen. Der Körper ist der Ort, an dem Sie den Großteil Ihrer HTML-Elemente platzieren werden. Zum Beispiel wird Text normalerweise in einem `<p>`-Tag (für Absatz) platziert. Bilder können mit dem `<img>`-Tag eingefügt werden, wobei das `src`-Attribut den Pfad zum Bild angibt und das `alt`-Attribut eine alternative Beschreibung für Benutzer bereitstellt, die das Bild nicht sehen können. Links werden mit dem `<a>`-Tag erstellt, wobei das `href`-Attribut die URL angibt, zu der der Link führen soll. Tabellen, Listen und andere komplexe Elemente haben ihre eigenen Tags und Strukturen. Es ist wichtig, dass der Körper einer HTML-Seite gut strukturiert und logisch organisiert ist, um die Zugänglichkeit und Benutzerfreundlichkeit zu gewährleisten. Verwenden Sie geeignete HTML-Elemente für Ihren Inhalt und achten Sie darauf, dass Ihre Seite auch ohne Stylesheets oder JavaScript verständlich und navigierbar ist. Die Verwendung von semantischen HTML-Elementen kann auch dazu beitragen, Ihre Seite für Suchmaschinen und Hilfstechnologien leichter verständlich zu machen.',
-    exercise: 'Erstelle den Body einer HTML-Seite mit einem Absatz, einem Bild und einem Link.',
-    correctAnswer: '<body><p>Hallo Welt!</p><img src="bild.jpg" alt="Ein schönes Bild"><a href="https://www.meinewebsite.com">Meine Webseite</a></body>',
+    exercise: 'Erstelle eine Dokumenttyp-Deklaration, Head und Body einer HTML-Seite. Erstelle zudem an der richtigen Stelle den Titel "Meine Webseite" und ein Text mit p mit dem Inhalt "Hello World!"',
+    correctAnswer: '<!DOCTYPE html><html><head><title>Meine Webseite</title></head><body><p>Hallo Welt!</p></body></html>',
     language: 'html',
     category: 'HTML Einheiten',
   },
@@ -296,7 +296,7 @@ const lessons = [
     description: 'Erfahre, wie man eine Navigationsleiste mit dem Nav-Tag erstellt',
     content: 'In HTML wird das nav-Element verwendet, um Abschnitte einer Webseite zu kennzeichnen, die Navigationslinks enthalten. Eine Navigationsleiste könnte Links zu den Hauptabschnitten einer Webseite, zu anderen verwandten Webseiten oder zu anderen relevanten Ressourcen enthalten. Es ist wichtig zu beachten, dass das nav-Element nur für Abschnitte bestimmt ist, deren Hauptzweck die Navigation ist, und nicht für andere Abschnitte, die zufällig Links enthalten.',
     exercise: 'Erstelle eine Navigationsleiste mit Links zu "Startseite", "Über uns" und "Kontakt".',
-    correctAnswer: '<nav><ul><li><a href="#start">Startseite</a></li><li><a href="#ueberuns">Über uns</a></li><li><a href="#kontakt">Kontakt</a></li></ul></nav>',
+    correctAnswer: '<nav><ul><li><a href="#">Startseite</a></li><li><a href="#">Über uns</a></li><li><a href="#">Kontakt</a></li></ul></nav>',
     language: 'html',
     category: 'HTML Einheiten',
   },
@@ -306,16 +306,10 @@ const lessons = [
     title: 'CSS-Einbettung: Style-Blöcke',
     description: 'Lerne CSS einzubetten, indem du Style-Blöcke in der HTML-Datei verwendest',
     content: 'Du kannst CSS auch einbetten, indem du Style-Blöcke in der HTML-Datei verwendest. Ein Style-Block wird innerhalb des `<style>`-Tags platziert, der sich im `<head>`-Bereich des HTML-Dokuments befindet. Innerhalb des Style-Blocks kannst du CSS-Regeln definieren, die auf verschiedene HTML-Elemente angewendet werden sollen. Diese Einbettungsmethode ermöglicht es dir, mehrere Stile zu definieren und sie wiederverwendbar zu machen, da sie auf mehrere Elemente angewendet werden können.',
-    exercise: 'Erstelle einen Style-Block in der HTML-Datei und definiere darin eine CSS-Regel, um die Hintergrundfarbe für alle `<div>`-Elemente festzulegen.(<head><body> usw Tags sind nicht notwendig)',
+    exercise: 'Erstelle einen Style-Block um CSS Code in einer HTML-Datei einzubetten. (Head, Body usw Tags sind nicht notwendig.)',
     correctAnswer: `
               <style>
-                div {
-                  background-color: #f2f2f2;
-                }
               </style>
-              <div>Inhalt des Elements 1</div>
-              <div>Inhalt des Elements 2</div>
-              <div>Inhalt des Elements 3</div>
         `,
     language: 'html',
     category: 'CSS Einheiten',
@@ -335,8 +329,8 @@ const lessons = [
     title: 'IDs und Klassen in CSS',
     description: 'Lerne, wie du IDs und Klassen in CSS verwendest und ihre unterschiedlichen Anwendungsgebiete',
     content: 'IDs und Klassen sind wichtige Konzepte in CSS, die es dir ermöglichen, bestimmte HTML-Elemente gezielt auszuwählen und ihnen Stile zuzuweisen. Eine ID wird mit einem vorangestellten Hash-Zeichen (#) gekennzeichnet und ist ein eindeutiger Bezeichner für ein Element. Jedes Element kann nur eine ID haben. Klassen werden mit einem vorangestellten Punkt (.) gekennzeichnet und können auf mehrere Elemente angewendet werden. Klassen ermöglichen es dir, Stile für Gruppen von Elementen zu definieren. IDs werden oft verwendet, um spezifische Elemente zu stylen, während Klassen verwendet werden, um gemeinsame Stile auf mehrere Elemente anzuwenden.',
-    exercise: 'Definiere entsprechende CSS-Regeln für die ID id-element das die Hintergrundfarbe #f2f2f2 ist und für die Klasse class-element das die Farbe rot ist.',
-    correctAnswer: '#id-element { background-color: #f2f2f2; } \n .class-element { color: red; }',
+    exercise: 'Definiere entsprechende CSS-Regeln für die ID id-element das die Hintergrundfarbe #f2f2f2 ist und für die Klasse class-elements das die Hintergrundfarbe rot ist.',
+    correctAnswer: '#id-element { background-color: #f2f2f2; } \n .class-elements { background-color: red; }',
     language: 'css',
     category: 'CSS Einheiten',
   },
@@ -363,15 +357,14 @@ const lessons = [
   },
   {
     id: '33',
-    title: 'CSS-Attribut: Color',
-    description: 'Lerne das CSS-Attribut color und seine Verwendung kennen',
-    content: 'Das CSS-Attribut color wird verwendet, um die Textfarbe eines Elements festzulegen. Du kannst jede gültige CSS-Farbe für den Text verwenden, z. B. einen Farbnamen wie red oder blue, einen hexadezimalen Farbwert wie #ff0000 oder einen RGB- oder HSL-Farbwert. Das Attribut color ermöglicht es dir, den Text innerhalb eines Elements visuell hervorzuheben und das Erscheinungsbild deiner Webseite anzupassen.',
-    exercise: 'Definiere die Style Regel für Texte des Tags p und lege die Textfarbe auf rot fest.',
-    correctAnswer: 'p { color: red; }',
+    title: 'CSS-Attribut: Color und Background-Color',
+    description: 'Lerne das CSS-Attribut color und background-color und ihre Verwendung kennen',
+    content: 'Das CSS-Attribut <strong>color</strong> wird verwendet, um die Textfarbe eines Elements festzulegen. Du kannst jede gültige CSS-Farbe für den Text verwenden, z. B. einen Farbnamen wie <strong>red</strong> oder <strong>blue</strong>, einen hexadezimalen Farbwert wie <strong>#ff0000</strong> oder einen RGB- oder HSL-Farbwert. Das Attribut <strong>color</strong> ermöglicht es dir, den Text innerhalb eines Elements visuell hervorzuheben und das Erscheinungsbild deiner Webseite anzupassen.<br /><br />Das CSS-Attribut <strong>background-color</strong> hingegen wird verwendet, um die Hintergrundfarbe eines Elements festzulegen. Du kannst es verwenden, um den Hintergrund eines Textabschnitts, einer Box oder eines gesamten Absatzes einzufärben. Du kannst jede gültige CSS-Farbe für den Hintergrund verwenden, ähnlich wie beim <strong>color</strong>-Attribut. Durch die Verwendung von <strong>background-color</strong> kannst du das Erscheinungsbild deiner Webseite weiter anpassen und visuelle Akzente setzen.<br /><br /><strong>Verwendung von color und background-color:</strong><br />Um das <strong>color</strong>-Attribut in CSS anzuwenden, musst du eine CSS-Regel definieren, die das gewünschte Element targetiert und die <strong>color</strong>-Eigenschaft festlegt. Zum Beispiel, um die Textfarbe von einem Text mit der id "textWithID" auf rot festzulegen, kannst du folgenden CSS-Code verwenden:<br /><br /> #textWithID {<br /> color: red;<br />} <br /><br />Mit dieser Regel wird der Text mit der ID "textWithID" in der Farbe Rot angezeigt.<br /><br />Ähnlich dazu wird das <strong>background-color</strong>-Attribut angewendet, um die Hintergrundfarbe eines Elements festzulegen. Du kannst es auf die gleiche Weise wie <strong>color</strong> verwenden, indem du eine CSS-Regel erstellst und das gewünschte Element targetierst. Hier ist ein Beispiel, um den Hintergrundfarbe aller DIVs auf Gelb zu setzen:<br /><br />div {<br /> background-color: yellow;<br />} <br /><br />Mit dieser Regel wird der Hintergrund aller DIVs in der Farbe Gelb angezeigt.<br /><br /><strong>Warum color und background-color wichtig sind:</strong><br />Das Attribut <strong>color</strong> ermöglicht es dir, die Lesbarkeit und das Erscheinungsbild des Textes auf deiner Webseite zu verbessern. Du kannst es verwenden, um den Text von Überschriften, Absätzen, Links und anderen Elementen farblich hervorzuheben oder an das Design deiner Webseite anzupassen.<br /><br />Das Attribut <strong>background-color</strong> bietet die Möglichkeit, den Hintergrund von Elementen farblich zu gestalten und visuelle Trennungen zwischen verschiedenen Abschnitten deiner Webseite zu schaffen. Es ermöglicht es dir auch, den Fokus auf bestimmte Elemente zu lenken oder den Gesamteindruck der Seite zu verbessern.<br /><br />Durch die Kombination von <strong>color</strong> und <strong>background-color</strong> kannst du eine breite Palette an visuellen Effekten und Designs erzeugen, um die Benutzererfahrung auf deiner Webseite zu optimieren.<br /><br />Beispiel für die Verwendung von color und background-color:<br />Hier ist ein Beispiel, wie du das <strong>color</strong>- und <strong>background-color</strong>-Attribut in einer CSS-Datei verwenden kannst, um die Textfarbe und Hintergrundfarbe eines Elements festzulegen:<br /><br /> p {<br />color: red;<br />background-color: yellow;<br />}<br /><br />Mit dieser CSS-Regel werden alle p-Texte auf der Webseite mit rotem Text auf gelbem Hintergrund angezeigt.<br />',
+    exercise: 'Definiere die Style Regel für ein Element mit der ID "exerciseText" und lege die Textfarbe auf rot und die Hintergrundfarbe auf gelb fest.',
+    correctAnswer: '#exerciseText { color: red; background-color: yellow; }',
     language: 'css',
     category: 'CSS Einheiten',
-
-  },
+  },  
   {
     id: '34',
     title: 'CSS-Attribut: Margin',
@@ -424,9 +417,9 @@ const lessons = [
       Um eine Google-Schriftart in dein Projekt einzufügen, musst du zuerst die Google Fonts-Webseite besuchen und eine Schriftart auswählen. Sobald du eine Schriftart ausgewählt hast, erhältst du einen Link, den du in den Kopf deiner HTML-Datei einfügen kannst. Du kannst dann diese Schriftart in deinem CSS verwenden, indem du den Schriftfamiliennamen in die font-family-Eigenschaft deiner Elemente einfügst.
       
       Es ist wichtig zu beachten, dass, obwohl externe CSS-Bibliotheken und Schriftarten viele Vorteile bieten, es auch wichtig ist, grundlegende CSS-Kenntnisse zu haben. Sie sollten immer danach streben, zu verstehen, wie der Code, den Sie verwenden, funktioniert, und wie Sie ihn an Ihre spezifischen Anforderungen anpassen können. Mit der Zeit werden Sie vielleicht feststellen, dass Sie weniger auf diese Bibliotheken angewiesen sind und stattdessen in der Lage sind, Ihre eigenen Styles von Grund auf neu zu erstellen. Aber bis dahin sind sie ein großartiges Werkzeug, um Ihnen auf Ihrem Weg zu helfen.`,
-    exercise: 'Füge die externe CSS-Bibliothek "Google Fonts" zu deiner Webseite hinzu und verwende die Schriftart "Lobster" in deinem Design.',
+    exercise: 'Füge die externe CSS-Bibliothek "Google Fonts" zu deiner Webseite hinzu und verwende die Schriftart "Lobster" in deinem Design. Dies soll auf einem Text in einem Div angewendet werden. In dem div soll stehen "Dein auffälliger Text hier".',
     correctAnswer: '<style>@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");</style><style>div { font-family: "Lobster", cursive; }</style><div>Dein auffälliger Text hier</div>',
-    language: 'htmlCss',
+    language: 'html',
     category: 'CSS Einheiten',
 
   },
@@ -435,9 +428,9 @@ const lessons = [
     title: 'CSS-Bibliothek: Material Design Lite',
     description: 'Lerne die Verwendung der CSS-Bibliothek Material Design Lite (MDL) kennen',
     content: 'Material Design Lite (MDL) ist eine CSS-Bibliothek, die von Google entwickelt wurde und auf dem Material Design-Konzept basiert. MDL bietet eine Reihe von vorgefertigten Komponenten und Stilen, die du in deine Webseite integrieren kannst, um ein ansprechendes und konsistentes Design zu erreichen. Mit MDL kannst du Buttons, Karten, Navigationsleisten, Formulare und viele andere UI-Elemente mit einem modernen Material Design-Look erstellen. Die Integration von MDL in deine Webseite ist relativ einfach und erfordert nur das Hinzufügen der entsprechenden CSS- und JavaScript-Dateien.',
-    exercise: 'Füge die CSS-Bibliothek Material Design Lite zu deiner Webseite hinzu und erstelle eine Karte (Card) mit einem Bild und einem Text.',
+    exercise: 'Füge die CSS-Bibliothek Material Design Lite zu deiner Webseite hinzu und erstelle eine Karte (Card) mit dem Text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam, est eget vestibulum tempus, ante arcu dictum nisl, vitae commodo turpis dui a arcu." und Titel "Card Title" auf dem Button soll schlicht Button stehen.',
     correctAnswer: '<html> <head> <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"> <script src="https://code.getmdl.io/1.3.0/material.min.js"></script> </head> <body> <div class="mdl-card mdl-shadow--2dp"> <div class="mdl-card__title"> <h2 class="mdl-card__title-text">Card Title</h2> </div> <div class="mdl-card__supporting-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam, est eget vestibulum tempus, ante arcu dictum nisl, vitae commodo turpis dui a arcu. </div> <div class="mdl-card__actions mdl-card--border"> <a class="mdl-button mdl-button--colored mdl-ripple-effect" href="#">Button</a> </div> </div> </body> </html>',
-    language: 'htmlCss',
+    language: 'html',
     category: 'CSS Einheiten',
   },
   {
@@ -447,12 +440,53 @@ const lessons = [
     content: 'Bootstrap ist eine der bekanntesten und am weitesten verbreiteten CSS-Bibliotheken. Sie bietet eine große Auswahl an vorgefertigten CSS-Stilen, Komponenten und JavaScript-Interaktionen, die verwendet werden können, um das Design und die Funktionalität von Webseiten zu verbessern. Bootstrap basiert auf einem responsiven Rasterlayout, das es einfach macht, Webseiten für verschiedene Bildschirmgrößen zu erstellen. Mit Bootstrap kannst du schnell und effizient professionell aussehende Webseiten entwickeln, ohne viel Zeit und Aufwand in das Design investieren zu müssen.',
     exercise: 'Füge die CSS-Bibliothek Bootstrap zu deiner Webseite hinzu und erstelle eine Navigationsleiste (Navbar) mit Links.',
     correctAnswer: '<html> <head> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> </head> <body> <nav class="navbar navbar-expand-md bg-dark navbar-dark"> <a class="navbar-brand" href="#">Logo</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="collapsibleNavbar"> <ul class="navbar-nav"> <li class="nav-item"> <a class="nav-link" href="#">Link 1</a> </li> <li class="nav-item"> <a class="nav-link" href="#">Link 2</a> </li> <li class="nav-item"> <a class="nav-link" href="#">Link 3</a> </li> </ul> </div> </nav> </body> </html>',
-    language: 'htmlCss',
+    language: 'html',
     category: 'CSS Einheiten',
   },
+  {
+    id: "40",
+    title: "Abschlussübung 1 - Standard CSS",
+    description: "Dies ist eine praktische Übung, die das, was du im HTML und CSS Kurs gelernt hast, auf die Probe stellt. Du wirst eine einfache Webseite von Grund auf erstellen.",
+    content: "In dieser Übung wirst du das Wissen aus dem HTML und CSS Kurs anwenden, um eine Webseite zu erstellen. Du wirst eine Webseite mit einer Navigationsleiste, einer Überschrift, Text und einer Tabelle erstellen und diese Elemente mit CSS gestalten.",
+    exercise: "<strong>HTML Code:</strong><br />Beginne damit, die Struktur deiner Webseite zu erstellen. Deine Webseite sollte eine Navigationsleiste haben, die drei Links enthält. Jeder Link sollte zu einer HTML-Seite führen, benannt als link1, link2 und link3. Die Überschrift deiner Webseite sollte 'Meine erste Homepage' lauten.<br /> Erstelle dann zwei Absätze. Der erste Absatz sollte den Text 'An der DHBW habe ich heute etwas über Basics in HTML gelernt!' enthalten und der zweite Absatz sollte 'HTML ist toll' lauten.<br />Erstelle zudem eine Tabelle mit spezifischem Inhalt. Die Tabelle sollte Überschriften haben: Semester 1, Semester 2 und Semester 3. In der zweiten Spalte der Tabelle füge 'JavaProgrammierung' für die ersten zwei Semester und 'Webentwicklung' für das dritte Semester hinzu.<br /><strong>CSS Code:</strong><br />Nun gestalte die Webseite. Der Hintergrund der gesamten Webseite sollte eine spezielle Farbe haben (#eceff1). Deine Navigationsleiste sollte eine bestimmte Höhe (40px), einen oberen Innenabstand (20px) und eine bestimmte Hintergrundfarbe haben (#90a4ae).<br />Die Links in deiner Navigationsleiste sollten eine spezielle Textfarbe (weiß), eine bestimmte Breite (150px) und einen linken Innenabstand (20%) haben.<br />Die Überschrift deiner Webseite sollte eine spezielle Farbe (blau) haben und in der Mitte ausgerichtet sein.<br />Die Tabelle sollte einen Rand haben, der 1px breit und schwarz ist, und ihre Breite sollte 100% des verfügbaren Raums einnehmen.",
+    correctAnswer: "<!DOCTYPE html><html><head><title>Meine erste Homepage</title><style>body{background-color:#eceff1;}nav{height:40px;padding-top:20px;background-color:#90a4ae;}nav a{color:#fff;width:150px;padding-left:20%;}h1{color:blue;text-align:center;}.table-style{width:100%;border:1px solid #000}</style></head><body><nav><a href='link1.html'>link1</a><a href='link2.html'>link2</a><a href='link3.html'>link3</a></nav><h1>Meine erste Homepage</h1><p>An der DHBW habe ich heute etwas über Basics in HTML gelernt!</p><p>HTML ist toll</p><table class='table-style'><tr><th>Semester 1</th><th>Semester 2</th><th>Semester 3</th></tr><tr><td>JavaProgrammierung</td><td>JavaProgrammierung</td><td>Webentwicklung</td></tr></table></body></html>",
+    language: "html",
+    category: "CSS Einheiten"
+},
+{
+  id: "41",
+  title: "Abschlussübung 2 - Material Design Lite",
+  description: "Diese ist die zweite kombinierte Abschlussaufgabe, nun mit dem Fokus auf Material Design Lite. Du wirst dein erlerntes Wissen anwenden, um eine voll funktionsfähige und stilvolle Webseite zu erstellen.",
+  content: "In dieser kombinierten Abschlussprüfung wirst du Material Design Lite statt reguläres HTML und CSS verwenden.",
+  exercise: "<strong>Webseite Struktur:</strong><br />Beginne mit einer einfachen Webseite Struktur, die eine Kopfzeile und einen Hauptinhalt hat. In deiner Kopfzeile füge eine Navigationsleiste mit drei Links hinzu, jeder Link führt zu einer anderen Webseite. Die Links sollten als Text 'link1', 'link2' und 'link3' haben und führen zu den Seiten 'link1.html', 'link2.html' und 'link3.html' respektive. Platziere außerdem eine Überschrift mit dem Text 'Meine erste Homepage' in deiner Kopfzeile.<br /><strong>HTML Elemente:</strong><br />In deinem Hauptinhalt erstelle eine Material Design Karte, die 50vw breit ist und links um 10vw gepaddet ist. Die Karte sollte einen Schatten mit einer Stärke von 24dp haben. In dieser Karte füge zwei Absätze mit dem Text 'An der DHBW habe ich heute etwas über Basics in HTML gelernt!' und 'HTML ist toll' hinzu. Füge auch eine Tabelle in die Karte ein, die drei Spalten mit den Überschriften 'Semester 1', 'Semester 2' und 'Semester 3' und darunter jeweils 'JavaProgrammierung', 'JavaProgrammierung', 'Webentwicklung' enthält.<br /><strong>Material Design Lite:</strong><br />Füge dem 'body'-Element deiner Webseite einen hellgrauen Hintergrund hinzu. Deine Navigationsleiste sollte eine dunkelgraue Hintergrundfarbe haben, wobei der Text der Links in Weiß dargestellt wird. Deine Überschrift sollte in der Mitte und in blauer Farbe dargestellt werden.",
+  correctAnswer: "<!DOCTYPE html><html><head><title>Meine erste Homepage</title><link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'><link rel='stylesheet' href='https://code.getmdl.io/1.3.0/material.indigo-pink.min.css'><style>.wide-card.mdl-card {width: 50vw; padding-left: 10vw; box-shadow: 0 24px 24px 0 rgba(0, 0, 0, 0.14), 0 9px 46px 0 rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);}</style></head><body style='background-color:#eceff1;'><div class='mdl-layout mdl-js-layout mdl-layout--fixed-header'><header class='mdl-layout__header'><div class='mdl-layout__header-row'><span class='mdl-layout-title'>Meine erste Homepage</span><div class='mdl-layout-spacer'></div><nav class='mdl-navigation mdl-layout--large-screen-only'><a class='mdl-navigation__link' href='link1.html'>link1</a><a class='mdl-navigation__link' href='link2.html'>link2</a><a class='mdl-navigation__link' href='link3.html'>link3</a></nav></div></header><main class='mdl-layout__content'><div class='page-content'><div class='wide-card mdl-card mdl-shadow--2dp'><div class='mdl-card__supporting-text'><h2>An der DHBW habe ich heute etwas über Basics in HTML gelernt!</h2><p>HTML ist toll!</p><table class='mdl-data-table mdl-js-data-table mdl-shadow--2dp'><thead><tr><th class='mdl-data-table__cell--non-numeric'>Semester 1</th><th class='mdl-data-table__cell--non-numeric'>Semester 2</th><th class='mdl-data-table__cell--non-numeric'>Semester 3</th></tr></thead><tbody><tr><td class='mdl-data-table__cell--non-numeric'>JavaProgrammierung</td><td class='mdl-data-table__cell--non-numeric'>JavaProgrammierung</td><td class='mdl-data-table__cell--non-numeric'>Webentwicklung</td></tr></tbody></table></div></div></div></main></div><script defer src='https://code.getmdl.io/1.3.0/material.min.js'></script></body></html>",
+  language: "html",
+  category: "CSS Einheiten"
+},
+
+{
+  id: "42",
+  title: "Abschlussübung 3 - Bootstrap",
+  description: "Diese Abschlussprüfung konzentriert sich auf die Verwendung von Bootstrap zur Erstellung einer stilvollen und responsiven Webseite. Du wirst verschiedene HTML-Elemente verwenden und mit den angegebenen CSS-Attributen arbeiten.",
+  content: "In dieser Abschlussprüfung wirst du Bootstrap anstelle von Material Design Lite verwenden.",
+  exercise: "<strong>Webseite Struktur:</strong><br />Beginne mit einer einfachen Webseite Struktur, die eine Kopfzeile und einen Hauptinhalt hat. In der Kopfzeile füge eine Überschrift hinzu, die den Text 'Meine Webseite' enthält. Im Hauptinhalt erstelle einen Absatz mit dem Text 'Willkommen auf meiner Webseite'.<br /><br /><strong>HTML Elemente:</strong><br />Füge einen Button mit dem Text 'Klick mich' hinzu. Erstelle ein Eingabefeld für den Namen des Benutzers und ein weiteres Eingabefeld für die E-Mail-Adresse. Erstelle eine Tabelle mit zwei Spalten und zwei Zeilen. In der ersten Zeile sollen die Überschriften 'Name' und 'E-Mail' stehen, in der zweiten Zeile sollen 'John Doe' und 'john@example.com' stehen. Verwende die HTML Sonderzeichen für &auml;, &ouml; und &uuml;. Erstelle auch eine ungeordnete Liste mit drei Punkten: 'Punkt 1', 'Punkt 2' und 'Punkt 3'. Verwende DIVs, um die verschiedenen Abschnitte der Webseite zu strukturieren.<br /><br /><strong>Bootstrap:</strong><br />Verwende Bootstrap-Klassen, um das Erscheinungsbild der Webseite zu gestalten. Verwende die 'btn' Klasse für den Button, die 'form-control' Klasse für die Eingabefelder und die 'table' Klasse für die Tabelle. Verwende auch die 'alert' Klasse, um eine Warnmeldung mit dem Text 'Achtung!' zu erstellen. Verwende die 'bg-info' Klasse, um den Hintergrund der Webseite blau zu färben. Verwende die 'text-danger' Klasse, um den Text rot zu färben. Füge auch eine Padding-Bottom von 20px zu den DIVs hinzu.<br /><br /><strong>CSS Attribute:</strong><br />Verwende die CSS-Attribute 'height', 'width', 'margin-top', 'color' und 'padding-bottom', um das Erscheinungsbild der Elemente anzupassen.",
+  correctAnswer: "<!DOCTYPE html><html><head><title>Meine Webseite</title><link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'></head><body><header><h1 style='color: red;'>Meine Webseite</h1></header><main><p>Willkommen auf meiner Webseite</p><button class='btn btn-primary' style='height: 40px; width: 150px; margin-top: 10px;'>Klick mich</button><br /><br /><input type='text' class='form-control' placeholder='Name' style='width: 200px; margin-top: 10px;'><br /><input type='email' class='form-control' placeholder='E-Mail' style='width: 200px; margin-top: 10px;'><br /><table class='table' style='width: 100%; margin-top: 10px;'><thead><tr><th>Name</th><th>E-Mail</th></tr></thead><tbody><tr><td>John Doe</td><td>john@example.com</td></tr></tbody></table><br />&auml; Punkt 1<br />&ouml; Punkt 2<br />&uuml; Punkt 3<br /><br /><div class='alert alert-danger' role='alert' style='padding-bottom: 20px;'>Achtung!</div></main></body></html>",
+  language: "html",
+  category: "CSS Einheiten"
+},
+
+
+
+
+
+
+
+
+
+
   
   {
-    id: '40',
+    id: '43',
     title: 'Einbindung von Javascript in HTML mit <script> Blöcke',
     description: 'Lerne, wie du Javascript in HTML einbindest, indem du <script> Blöcke verwendest',
     content: 'Die Einbindung von Javascript in HTML ermöglicht es Entwicklern, die Funktionalität ihrer Webseiten zu erweitern und interaktive Elemente hinzuzufügen. Eine der gängigsten Methoden, um Javascript in HTML einzubinden, besteht darin, <script> Blöcke zu verwenden. Ein <script> Block kann entweder im <head> oder im <body> Bereich des HTML-Dokuments platziert werden. Wenn ein <script> Block im <head> Bereich platziert wird, wird der Javascript-Code ausgeführt, sobald das HTML-Dokument geladen wird. Wenn er im <body> Bereich platziert wird, wird der Code ausgeführt, sobald er erreicht wird. In den <script> Blöcken kannst du Javascript-Code schreiben oder auch auf externe Javascript-Dateien verweisen. Die Einbindung von Javascript in HTML bietet große Flexibilität und eröffnet eine Vielzahl von Möglichkeiten zur Anpassung und Verbesserung deiner Webseiten.',
@@ -462,7 +496,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '41',
+    id: '44',
     title: 'Einbindung von Javascript mithilfe von JS Dateien',
     description: 'Lerne, wie du Javascript in HTML einbindest, indem du JS-Dateien verwendest',
     content: 'Die Einbindung von Javascript in HTML kann auch mithilfe von externen JS-Dateien erfolgen. Diese Methode bietet eine saubere und organisierte Art, den Javascript-Code von der HTML-Struktur zu trennen. Um Javascript mithilfe von JS-Dateien einzubinden, erstelle eine separate .js-Datei mit dem gewünschten Code. Dann kannst du im HTML-Dokument ein <script> Tag verwenden und das "src" Attribut verwenden, um auf die JS-Datei zu verweisen. Durch die Verwendung von JS-Dateien wird der HTML-Code übersichtlicher und die Wartung des Codes wird einfacher, da Änderungen nur in der JS-Datei vorgenommen werden müssen. Darüber hinaus ermöglicht die externe Einbindung von JS-Dateien das Caching des Codes, was zu einer verbesserten Leistung der Webseite führen kann.',
@@ -472,7 +506,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '42',
+    id: '45',
     title: 'Anwendung von JavaScript durch onClick Attribute',
     description: 'Lerne, wie du JavaScript durch onClick Attribute in einem HTML Button anwendest',
     content: 'Die Anwendung von JavaScript in HTML ermöglicht es dir, interaktive Elemente auf deiner Webseite zu erstellen. Eine häufige Methode, um JavaScript einzubinden, ist die Verwendung des onClick Attributes in einem HTML Button. Das onClick Attribute wird verwendet, um eine JavaScript-Funktion aufzurufen, wenn der Button angeklickt wird. Du kannst den Button mit einem beliebigen Text oder Inhalt erstellen und das onClick Attribute hinzufügen, um eine bestimmte Funktion auszuführen. Dies ermöglicht es dir, benutzerdefiniertes Verhalten hinzuzufügen, z. B. das Auslösen von Ereignissen oder das Ändern von Elementen auf der Webseite. Die Anwendung von JavaScript durch onClick Attribute bietet dir eine einfache und effektive Möglichkeit, Interaktivität in deine Webseite zu integrieren.',
@@ -482,7 +516,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '43',
+    id: '46',
     title: 'Anwendung von JavaScript ohne Funktion',
     description: 'Lerne, wie du JavaScript ohne eine Funktion in HTML anwendest',
     content: 'Du kannst JavaScript direkt in dein HTML-Dokument einbinden, ohne eine separate Funktion zu definieren. Dies ermöglicht es dir, JavaScript-Code direkt in den HTML-Code einzufügen und Aktionen auszuführen, ohne eine zusätzliche Funktion zu verwenden. Du kannst zum Beispiel das <script> Tag verwenden, um JavaScript-Code einzufügen, der eine Aktion auslöst, wie das Anzeigen einer Benachrichtigung oder das Ändern des Inhalts eines Elements. Die direkte Anwendung von JavaScript ohne eine Funktion kann nützlich sein, wenn du schnelle Änderungen oder einfache Interaktionen auf deiner Webseite durchführen möchtest. Es ist jedoch wichtig, den Code sauber und gut strukturiert zu halten, um Verwirrung und Fehler zu vermeiden.',
@@ -492,7 +526,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '44',
+    id: '47',
     title: 'Anwendung von JavaScript durch Funktionen',
     description: 'Erläutere die Verwendung von JavaScript-Funktionen',
     content: 'Funktionen sind ein grundlegender Bestandteil von JavaScript und ermöglichen die Wiederverwendbarkeit von Code. Eine Funktion wird definiert, indem der Funktionsname angegeben wird, gefolgt von Klammern, in denen die Parameter der Funktion aufgelistet werden. Der Funktionscode wird in geschweiften Klammern platziert. Um eine Funktion aufzurufen, wird der Funktionsname mit den entsprechenden Argumenten verwendet. Funktionen können auch einen Rückgabewert haben, der mit dem return-Schlüsselwort angegeben wird. Um Variablen an eine Funktion zu übergeben, werden die Parameter der Funktion verwendet. Die übergebenen Werte können dann innerhalb der Funktion verwendet werden. Es ist wichtig, die Grundlagen der Funktionen in JavaScript zu verstehen, da sie die Möglichkeit bieten, Code effizienter und organisierter zu gestalten.',
@@ -502,7 +536,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '45',
+    id: '48',
     title: 'Anwendung von JavaScript durch EventListener',
     description: 'Lerne, wie du JavaScript durch EventListener in HTML anwendest',
     content: 'Die Anwendung von JavaScript durch EventListener ermöglicht es dir, auf bestimmte Ereignisse auf deiner Webseite zu reagieren und entsprechende Aktionen auszuführen. Ein EventListener wird verwendet, um auf ein bestimmtes Ereignis, wie zum Beispiel einen Mausklick oder eine Tastatureingabe, zu warten und dann eine Funktion auszuführen. Du kannst den EventListener an ein HTML-Element binden, indem du die Methode addEventListener verwendest und das gewünschte Ereignis sowie die zugehörige Funktion angibst. Dadurch kannst du komplexe Interaktionen und Reaktionen auf Benutzeraktionen implementieren. Die Anwendung von JavaScript durch EventListener eröffnet vielfältige Möglichkeiten zur Interaktivität und Dynamik deiner Webseite.',
@@ -512,7 +546,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '46',
+    id: '49',
     title: 'Webseitenmanipulation durch JavaScript: Element auswählen anhand der ID',
     description: 'Lerne, wie du mit JavaScript ein HTML-Element anhand seiner ID auswählen und manipulieren kannst',
     content: 'Wenn du eine Webseite mit JavaScript manipulieren möchtest, musst du zuerst das gewünschte HTML-Element auswählen. Eine gängige Methode, um ein Element auszuwählen, besteht darin, seine ID zu verwenden. Jedes HTML-Element kann eine eindeutige ID haben, die du verwenden kannst, um es zu identifizieren. In JavaScript verwendest du die Funktion document.getElementById(), um ein Element anhand seiner ID auszuwählen. Du gibst die ID des Elements als Argument an die Funktion und erhältst das entsprechende Element zurück. Sobald du das Element ausgewählt hast, kannst du seine Eigenschaften ändern, den Inhalt bearbeiten oder weitere Aktionen ausführen. Die Auswahl von Elementen anhand ihrer ID ist eine grundlegende Fähigkeit in der Webseitenmanipulation mit JavaScript.',
@@ -522,7 +556,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '47',
+    id: '50',
     title: 'Webseitenmanipulation durch JavaScript: HTML-Manipulation',
     description: 'Lerne, wie du mit JavaScript den HTML-Inhalt eines Elements manipulieren kannst',
     content: 'JavaScript bietet leistungsstarke Möglichkeiten, um den Inhalt von HTML-Elementen zu ändern. Eine gängige Manipulation besteht darin, den HTML-Inhalt eines Elements zu bearbeiten. Dies ermöglicht es dir, Text, Bilder, Links oder andere Elemente in Echtzeit zu aktualisieren. Um den HTML-Inhalt eines Elements zu ändern, musst du zuerst das gewünschte Element auswählen. Dies kannst du mithilfe von Funktionen wie document.getElementById() oder document.querySelector() tun. Sobald du das Element ausgewählt hast, kannst du die Eigenschaft innerHTML verwenden, um den HTML-Inhalt des Elements zu ändern. Indem du den innerHTML-Wert auf einen neuen Wert setzt, kannst du den Inhalt des Elements aktualisieren. Diese Art der Manipulation ist besonders nützlich, wenn du dynamischen Inhalt auf einer Webseite erstellen möchtest.',
@@ -532,7 +566,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '48',
+    id: '51',
     title: 'Webseitenmanipulation durch JavaScript: CSS-Manipulation',
     description: 'Lerne, wie du mit JavaScript das CSS-Styling eines Elements manipulieren kannst',
     content: 'JavaScript ermöglicht es dir, das Aussehen und Verhalten von HTML-Elementen durch Manipulation von CSS-Eigenschaften zu ändern. Eine Möglichkeit, dies zu tun, besteht darin, das CSS-Styling eines Elements direkt über JavaScript zu ändern. Du kannst dies tun, indem du das gewünschte Element auswählst und dann seine style-Eigenschaft verwendest, um auf die CSS-Eigenschaften zuzugreifen und diese zu ändern. Zum Beispiel kannst du die style.paddingLeft-Eigenschaft verwenden, um den linken Innenabstand eines Elements anzupassen. Indem du den Wert dieser Eigenschaft änderst, kannst du das Aussehen des Elements dynamisch anpassen. Die CSS-Manipulation mit JavaScript bietet dir die Flexibilität, das Erscheinungsbild deiner Webseite basierend auf Benutzerinteraktionen oder anderen Ereignissen anzupassen.',
@@ -542,7 +576,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '49',
+    id: '52',
     title: 'Variablen in JavaScript',
     description: 'Lerne, wie du Variablen in JavaScript deklarierst und verwendest',
     content: 'Variablen sind ein grundlegender Bestandteil der Programmierung und ermöglichen es dir, Werte zu speichern und darauf zuzugreifen. In JavaScript kannst du Variablen mit dem Schlüsselwort "var", "let" oder "const" deklarieren. Die Wahl des Schlüsselworts hängt von der gewünschten Art der Variablen ab. "var" wird für globale Variablen verwendet, "let" für lokale Variablen und "const" für konstante Variablen, deren Wert sich nicht ändert. Nachdem du eine Variable deklariert hast, kannst du ihr einen Wert zuweisen und diesen Wert später im Code verwenden. Variablen ermöglichen es dir, Daten zu speichern, zu manipulieren und sie in deinen Programmen flexibel einzusetzen.',
@@ -552,7 +586,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '50',
+    id: '53',
     title: 'Logik in JavaScript: IF-Bedingungen',
     description: 'Lerne, wie du IF-Bedingungen in JavaScript verwendest, um logische Entscheidungen zu treffen',
     content: 'IF-Bedingungen ermöglichen es dir, in deinem Code logische Entscheidungen zu treffen und entsprechend unterschiedliche Aktionen auszuführen. In JavaScript kannst du IF-Bedingungen mit dem Schlüsselwort "if" und optionalen "else if" und "else" Blöcken verwenden. Du gibst eine Bedingung an, die ausgewertet wird, und wenn die Bedingung wahr ist, wird der Code innerhalb des IF-Blocks ausgeführt. Andernfalls wird der Code innerhalb des optionalen "else if" oder "else" Blocks ausgeführt. Du kannst verschiedene Vergleichsoperatoren verwenden, um Bedingungen zu formulieren, z.B. "===" für den strikten Gleichheitsvergleich oder "==" für den lockeren Gleichheitsvergleich. IF-Bedingungen sind ein wichtiges Werkzeug, um logische Entscheidungen in deinem JavaScript-Code zu treffen.',
@@ -562,7 +596,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '51',
+    id: '54',
     title: 'Schleifen in JavaScript',
     description: 'Lerne, wie du Schleifen in JavaScript verwendest, um wiederholte Aufgaben auszuführen',
     content: 'Schleifen ermöglichen es dir, eine oder mehrere Anweisungen mehrmals auszuführen, basierend auf einer Bedingung. In JavaScript gibt es verschiedene Arten von Schleifen, darunter die "while"-Schleife und die "for"-Schleife. Die "while"-Schleife führt den Codeblock so lange aus, wie eine angegebene Bedingung wahr ist. Die "for"-Schleife wiederholt den Codeblock für eine bestimmte Anzahl von Durchläufen. Schleifen sind besonders nützlich, wenn du wiederholte Aufgaben erledigen oder über eine Sammlung von Elementen iterieren möchtest. Indem du Schleifen in deinem JavaScript-Code verwendest, kannst du effizienter arbeiten und den Code wieder verwenden.',
@@ -572,7 +606,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '52',
+    id: '55',
     title: 'Funktionen in JavaScript: alert()',
     description: 'Lerne, wie du die Funktion alert() in JavaScript verwendest um eine Browser Meldung zu erzeugen.',
     content: 'Funktionen sind ein grundlegendes Konzept in der Programmierung und ermöglichen es dir, eine Reihe von Anweisungen zu gruppieren und wiederverwendbar zu machen. In JavaScript gibt es eine Vielzahl von vordefinierten Funktionen, die dir dabei helfen, bestimmte Aktionen auszuführen. Eine dieser Funktionen ist alert(). Die Funktion alert() wird verwendet, um eine Benachrichtigung oder eine Meldung anzuzeigen. Wenn die Funktion alert() aufgerufen wird, wird ein Popup-Fenster mit der angegebenen Meldung angezeigt und der Benutzer kann auf "OK" klicken, um das Popup-Fenster zu schließen. Die Funktion alert() ist besonders nützlich, um Benutzer auf wichtige Informationen hinzuweisen oder eine einfache Bestätigung von Aktionen zu erhalten.',
@@ -582,7 +616,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '53',
+    id: '56',
     title: 'Funktionen in JavaScript: Mathe',
     description: 'Erläutere die Verwendung von mathematischen Funktionen in JavaScript',
     content: 'JavaScript bietet verschiedene mathematische Funktionen, die in praktischen Anwendungsfällen nützlich sein können. Die Math.random()-Funktion erzeugt eine zufällige Zahl zwischen 0 (einschließlich) und 1 (ausschließlich). Um eine zufällige ganze Zahl in einem bestimmten Bereich zu erhalten, kann die Math.floor()-Funktion verwendet werden. Diese Funktion rundet eine Zahl ab und gibt die größte ganze Zahl kleiner oder gleich der gegebenen Zahl zurück. Um beispielsweise eine zufällige Zahl zwischen 1 und 10 zu generieren, kann folgender Code verwendet werden: Math.floor(Math.random() * 10) + 1. Zusätzlich bietet das Math-Objekt auch Konstanten wie Math.PI, die den Wert von Pi zurückgeben. Durch das Verständnis dieser mathematischen Funktionen in JavaScript kann man komplexe Berechnungen durchführen und mit Zahlen effektiv arbeiten.',
@@ -592,7 +626,7 @@ const lessons = [
     category: 'JavaScript Einheiten',
   },
   {
-    id: '54',
+    id: '57',
     title: 'Aufrufen von APIs in JavaScript',
     description: 'Eine umfassende Anleitung zum Aufrufen von APIs mit JavaScript',
     content: `<strong>Einleitung</strong><br />Das Aufrufen von APIs mit JavaScript ist ein wichtiger Bestandteil der modernen Webentwicklung. APIs ermöglichen den Zugriff auf externe Ressourcen und Daten und eröffnen vielfältige Möglichkeiten zur Integration und Interaktion mit verschiedenen Services und Plattformen. In dieser Unterrichtseinheit werden wir uns ausführlich mit dem Aufrufen von APIs in JavaScript befassen und die grundlegenden Konzepte, Techniken und Best Practices kennenlernen.<br /><strong>Was ist eine API?</strong><br />API steht für Application Programming Interface und ist eine Schnittstelle, die es ermöglicht, auf bestimmte Funktionen oder Daten eines Systems zuzugreifen. APIs stellen die Kommunikation zwischen verschiedenen Anwendungen, Plattformen oder Diensten her und ermöglichen es, Informationen auszutauschen und Aktionen durchzuführen. APIs können in verschiedenen Formen auftreten, wie zum Beispiel Web-APIs, Bibliotheks-APIs oder Betriebssystem-APIs.<br /><strong>Warum APIs verwenden?</strong><br />Die Verwendung von APIs bietet zahlreiche Vorteile für Entwickler. Hier sind einige der wichtigsten Gründe, warum APIs in der Webentwicklung weit verbreitet sind: 1. Datenzugriff: APIs ermöglichen den Zugriff auf externe Datenquellen wie öffentliche APIs, Datenbanken oder andere webbasierte Services. Dadurch können Entwickler Daten in Echtzeit abrufen und in ihre Anwendungen integrieren. 2. Serviceintegration: APIs ermöglichen die nahtlose Integration von Diensten und Plattformen. Entwickler können APIs nutzen, um beispielsweise Zahlungsabwicklungen, soziale Netzwerke, Kartendienste und viele andere Funktionen in ihre Anwendungen einzubinden. 3. Automatisierung: APIs bieten Möglichkeiten zur Automatisierung von Aufgaben und Prozessen. Durch das Aufrufen von APIs können bestimmte Aktionen automatisch ausgeführt werden, was die Effizienz und Skalierbarkeit von Anwendungen verbessert.<br /><strong>Die fetch() Funktion</strong><br />In JavaScript wird häufig die fetch() Funktion verwendet, um APIs aufzurufen. Die fetch() Funktion ist eine moderne Methode, um Netzwerkanfragen durchzuführen und Daten von Servern abzurufen. Sie unterstützt verschiedene Arten von HTTP-Anfragen, wie GET, POST, PUT und DELETE.<br />Hier ist ein Beispiel für die Verwendung der fetch() Funktion, um eine GET-Anfrage an eine API zu senden und die erhaltenen Daten zu verarbeiten: fetch('https://api.example.com/data').then(response => response.json()).then(data => { console.log(data); }).catch(error => { console.error(error); });<br />In diesem Beispiel wird die fetch() Funktion verwendet, um eine GET-Anfrage an die URL 'https://api.example.com/data' zu senden. Die erhaltenen Daten werden mit der json() Methode in ein JavaScript-Objekt umgewandelt. Anschließend können die Daten in der Konsole ausgegeben oder weiterverarbeitet werden. Die catch() Methode wird verwendet, um Fehler abzufangen und entsprechend zu reagieren.<br /><strong>Arbeiten mit API-Daten</strong><br />Nachdem wir die Daten von einer API erhalten haben, können wir sie in unserer Anwendung verwenden. Die Struktur der Daten hängt von der spezifischen API ab, die wir verwenden. Oftmals handelt es sich bei den Daten um JSON (JavaScript Object Notation), das in JavaScript einfach als JavaScript-Objekt verarbeitet werden kann.<br />Hier sind einige gängige Schritte, um mit API-Daten umzugehen: 1. Datenparsen: Wenn die API JSON-Daten zurückgibt, können wir die json() Methode verwenden, um die Daten in ein JavaScript-Objekt umzuwandeln. Dadurch können wir leicht auf die verschiedenen Eigenschaften und Werte zugreifen. 2. Datenfilterung: Oftmals sind die erhaltenen Daten umfangreich und enthalten Informationen, die wir nicht benötigen. Wir können die JavaScript-Array-Methoden wie filter(), map() oder reduce() verwenden, um die Daten zu filtern und nur die relevanten Informationen zu extrahieren. 3. Datenanzeige: Nachdem wir die Daten verarbeitet haben, können wir sie in unserer Anwendung anzeigen. Dies kann durch das Aktualisieren des DOM (Document Object Model) oder das Rendern von Komponenten in Frameworks wie React erfolgen.<br /><strong>Authentifizierung und Zugriffsschlüssel</strong><br />Einige APIs erfordern eine Authentifizierung oder einen Zugriffsschlüssel, um Zugriff auf die Daten zu erhalten. Dies dient der Sicherheit und ermöglicht es den API-Anbietern, den Zugriff auf ihre Ressourcen zu kontrollieren.<br />Um eine API mit Authentifizierung aufzurufen, müssen wir normalerweise unseren Zugriffsschlüssel oder Token in den Anfragekopf (Header) einfügen. Dies kann mithilfe von Optionen in der fetch() Funktion erreicht werden. Hier ist ein Beispiel: fetch('https://api.example.com/data', { headers: { 'Authorization': 'Bearer {dein_API_Token}' } }).then(response => response.json()).then(data => { console.log(data); }).catch(error => { console.error(error); });<br />In diesem Beispiel fügen wir den Zugriffsschlüssel in den Anfragekopf mit dem 'Authorization' Schlüssel hinzu. Der Schlüsselwert beginnt normalerweise mit "Bearer" gefolgt von unserem Zugriffsschlüssel.<br /><strong>Beispiel: Deutsche Bahn API</strong><br />Lassen Sie uns ein Beispiel durchgehen, wie wir die Deutsche Bahn API mit JavaScript aufrufen können. Die Deutsche Bahn API bietet verschiedene Informationen über Fahrpläne, Verbindungen, Preise und mehr.<br />Um die Deutsche Bahn API aufzurufen, verwenden wir die fetch() Funktion mit der entsprechenden URL. Hier ist ein Beispiel, wie wir die Verbindungsdaten von "Berlin" nach "Munich" abrufen können: fetch('https://api.deutschebahn.com/fahrplan-plus/v1/connections?start=Berlin&ziel=Munich', { headers: { 'Authorization': 'Bearer {dein_API_Token}' } }).then(response => response.json()).then(data => { console.log(data); }).catch(error => { console.error(error); });<br />In diesem Beispiel rufen wir die Verbindungsdaten von "Berlin" nach "Munich" auf. Stellen Sie sicher, dass Sie Ihren eigenen Zugriffsschlüssel in den Anfragekopf einfügen, um erfolgreich auf die API zugreifen zu können.<br /><strong>Zusammenfassung</strong><br />Das Aufrufen von APIs in JavaScript eröffnet zahlreiche Möglichkeiten zur Integration und Interaktion mit externen Ressourcen und Diensten. Die fetch() Funktion ermöglicht es uns, Netzwerkanfragen an APIs zu senden und die erhaltenen Daten zu verarbeiten. Wir können JSON-Daten in JavaScript-Objekte umwandeln und sie in unserer Anwendung anzeigen oder weiterverarbeiten. Bei APIs mit Authentifizierung müssen wir unseren Zugriffsschlüssel in den Anfragekopf einfügen, um Zugriff auf die geschützten Ressourcen zu erhalten.<br /><strong>Übung</strong><br />Rufen Sie die API "https://api.zippopotam.us/us/10001" auf und geben Sie die Daten in der Konsole aus.<br />Tipp: Verwenden Sie die fetch() Funktion und die .then() Methode, um die erhaltenen Daten zu verarbeiten.`,
@@ -600,7 +634,116 @@ const lessons = [
     correctAnswer: "fetch('https://api.zippopotam.us/us/10001').then(response => response.json()).then(data => { console.log(data); }).catch(error => { console.error(error); });",
     language: 'js',
     category: 'JavaScript Einheiten',
+  },
+  {
+    id: "58",
+    title: "Abschlussübung 1 - Zahl raten",
+    description: "Diese Abschlussprüfung konzentriert sich auf die Verwendung von JavaScript Modulen zur Erstellung eines Rate Spiels auf deiner Webseite.",
+    content: "In dieser Abschlussprüfung wirst du JavaScript Module verwenden, um ein Rate Spiel auf deiner Webseite zu implementieren.",
+    exercise: "<strong>HTML Code:</strong><br />Erstelle die grundlegende Struktur deiner Webseite. Füge eine Navigationsleiste mit drei Links hinzu, die zu den Seiten link1, link2 und link3 führen. Die Überschrift der Webseite soll 'Meine erste Homepage' lauten. Erstelle dann zwei Absätze mit den Texten 'An der DHBW habe ich heute etwas über Basics in HTML gelernt!' und 'HTML ist toll'. Erstelle außerdem eine Tabelle mit den Überschriften 'Semester 1', 'Semester 2' und 'Semester 3'. In der zweiten Zeile der Tabelle füge die Inhalte 'JavaProgrammierung' für die ersten beiden Semester und 'Webentwicklung' für das dritte Semester hinzu.<br /><br /><strong>CSS Code:</strong><br />Verwende Bootstrap, um das Erscheinungsbild deiner Webseite zu gestalten. Setze die Hintergrundfarbe des Body-Elements auf eine spezifische Farbe (#eceff1). Gestalte die Navigationsleiste mit einer festen Höhe von 40px, einem oberen Innenabstand von 20px und einer spezifischen Hintergrundfarbe (#90a4ae). Passe den Text in den Links der Navigationsleiste an, indem du ihnen eine spezifische Textfarbe (weiß), eine feste Breite (150px) und einen linken Innenabstand (20%) zuweist. Stelle die Überschrift der Webseite in der Mitte ausgerichtet dar und gib ihr eine spezifische Farbe (blau). Gib der Tabelle einen 1px breiten, schwarzen Rand und setze ihre Breite auf 100% des verfügbaren Raums.",
+    correctAnswer: '<!DOCTYPE html><html><head>    <title>Meine erste Homepage</title>    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"></head><body>    <nav class="navbar navbar-expand-lg navbar-light bg-light">        <a class="navbar-brand" href="#">Meine erste Homepage</a>        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">            <span class="navbar-toggler-icon"></span>        </button>        <div class="collapse navbar-collapse" id="navbarNav">            <ul class="navbar-nav">                <li class="nav-item">                    <a class="nav-link" href="link1.html">Link 1</a>                </li>                <li class="nav-item">                    <a class="nav-link" href="link2.html">Link 2</a>                </li>                <li class="nav-item">                    <a class="nav-link" href="link3.html">Link 3</a>                </li>            </ul>        </div>    </nav>    <div class="container">        <h1 class="text-center">Meine erste Homepage</h1>        <p>An der DHBW habe ich heute etwas über Basics in HTML gelernt!</p>        <p>HTML ist toll</p>        <table class="table">            <thead>                <tr>                    <th>Semester 1</th>                    <th>Semester 2</th>                    <th>Semester 3</th>                </tr>            </thead>            <tbody>                <tr>                    <td>JavaProgrammierung</td>                    <td>JavaProgrammierung</td>                    <td>Webentwicklung</td>                </tr>            </tbody>        </table>        <input type="number" id="guessInput">        <button onclick="checkGuess()">Raten</button>    </div>    <script>             var randomNumber = Math.floor(Math.random() * 100) + 1;        function checkGuess() {            var guess = document.getElementById("guessInput").value;            if (guess == randomNumber) {                alert("Glückwunsch! Du hast die Zahl richtig geraten!");                randomNumber = Math.floor(Math.random() * 100) + 1;            } else if (guess < randomNumber) {                alert("Die Zahl ist höher! Versuche es erneut.");            } else {                alert("Die Zahl ist niedriger! Versuche es erneut.");            }        }    </script></body></html>',
+    language: 'html',
+    category: 'JavaScript Einheiten',
+},
+{
+  id: "59",
+  title: "Abschlussübung 2 - API-Aufruf",
+  description: "In dieser Abschlussübung rufst du eine externe API auf und zeigst das Ergebnis auf deiner Webseite an.",
+  content: "In dieser Abschlussübung rufst du eine externe API auf und zeigst das Ergebnis auf deiner Webseite an.",
+  exercise: "<strong>HTML Code:</strong><br />Erstelle eine vollständige HTML Seite mit Dokumenttypdeklaration, Head und Body. Der Titel soll Abschlussübung sein. Zudem soll Material Design Lite als CSS und JS importiert werden. (CSS und JS da wir ein Input Feld mit Material Design Lite Animationen anwenden) <br /> Füge zudem eine Überschrift, einen Material Design Lite Button, ein Material Design Lite Input Feld und ein Textelement hinzu. Der Button soll den Text 'API aufrufen' haben. Das Textelement sollte die ID textToManipulate haben, damit es später aktualisiert werden kann mit dem Text der API. Davor soll in dem Textelement 'Ursprünglicher Text' stehen. Das Input Feld sollte die ID postcodeInput haben und den Standardwert 10001 enthalten.<br /><br /><strong>Javascript Code:</strong><br />Erstelle eine Funktion mit dem Namen callAPI, die aufgerufen wird, wenn der Button geklickt wird. In dieser Funktion rufst du die externe API 'https://api.zippopotam.us/us/' + postcode auf und aktualisierst den Text im Textelement mit dem API-Ergebnis. Der Wert von postcode soll aus dem Input Feld mit der ID postcodeInput abgerufen werden. Anmerkung: die Zahl 10001 ist der Postcode von New York City.",
+  correctAnswer: "<!DOCTYPE html><html><head><title>Abschlussübung</title><link rel=\"stylesheet\" href=\"https://code.getmdl.io/1.3.0/material.indigo-pink.min.css\"><script defer src='https://code.getmdl.io/1.3.0/material.min.js'></script> </head><body><h1>Abschlussübung</h1><div class=\"mdl-textfield mdl-js-textfield\"><input class=\"mdl-textfield__input\" type=\"text\" value='10001' id=\"postcodeInput\"><label class=\"mdl-textfield__label\" for=\"postcodeInput\">Postcode</label></div><button class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored\" onclick=\"callAPI()\">API aufrufen</button><p id=\"textToManipulate\">Ursprünglicher Text</p><script>function callAPI(){var textElement=document.getElementById('textToManipulate');var postcode=document.getElementById('postcodeInput').value;if(textElement){fetch('https://api.zippopotam.us/us/'+postcode).then(function(response){return response.json();}).then(function(data){textElement.textContent=JSON.stringify(data,null,2);}).catch(function(error){console.error('Fehler beim API-Aufruf:',error);});}}</script>  </body></html>",
+  language: "html",
+  category: "JavaScript Einheiten"
+},
+{
+  id: "60",
+  title: "Abschlussübung 3 - OpenWeather API & SPA",
+  description: "In dieser Abschlussübung rufst du die OpenWeather API auf, um die aktuelle Temperatur einer Stadt abzurufen. Der Nutzer muss die Temperatur erraten, und je nachdem, ob die Eingabe zu hoch oder zu niedrig ist, wird eine Material Design Karte mit einem entsprechenden Hinweis angezeigt. Das ganze wird ihre erste SPA (Single Page Application) sein.",
+  content: "In dieser Abschlussübung rufst du die OpenWeather API auf, um die aktuelle Temperatur der Stadt Stuttgart (Stadt ID: 2935022) abzurufen. Der Nutzer muss die Temperatur erraten, und je nachdem, ob die Eingabe zu hoch oder zu niedrig ist, wird eine Material Design Karte mit einem Hinweis angezeigt. Die Karte sollte bereits im HTML vorhanden sein, aber mit dem Stil 'display: none' versteckt sein. Da sie vermutlich zum ersten Mal eine Seite erstellen welches Inhalt anzeigt und ausblendet basierend auf Nutzereingaben, ist dies ihre erste SPA (Single Page Application). Zukünftig können sie so eine vollständige SPA entwickeln indem sie statt einem Impressum Button die Impressums Karte anzeigen basierend auf einen Klick in der Navigationsleiste.",
+  exercise: "<strong>HTML Code:</strong><br />Erstelle eine vollständige HTML-Seite mit Dokumenttypdeklaration, Head und Body. Der Titel soll 'Abschlussübung' sein. Zudem soll Material Design Lite als CSS und JS importiert werden. (CSS und JS, da wir später Material Design Lite-Komponenten verwenden werden)<br /><br />Füge eine Material Design Card mit der ID 'gameCard' hinzu. In dieser Karte soll das Temperatur Rate-Spiel enthalten sein. Diese beinhaltet folglich einen Text mit dem Inhalt 'Errate die aktuelle Temperatur in Stuttgart:', ein Material Design Lite Input Feld (id: temperatureInput) , einen Hinweis Text (id: hintText, Standardwert: Hier steht bald ein Hinweis.) und einen Material Design Lite Button mit dem Text 'Überprüfen'. <br /><br /> Darunter füge einen Button mit dem Text 'Impressum' hinzu, der die ID 'imprintButton' hat.<br />Erstelle eine weitere Material Design Card mit der ID 'imprintCard', die das Impressum enthält. In dieser Karte sollte ein Textelement mit dem Impressum-Text enthalten sein. Die 'imprintCard' sollte ursprünglich versteckt sein (mit dem Stil 'display: none').<br /><br /><strong>Javascript Code:</strong><br />Durch den Impressums Button soll bei einem Klick auf den Button per onClick Attribut die Funktion 'toggleImprintCard' ausgeführt werden. In dieser soll überprüft werden, ob die 'imprintCard' sichtbar ist oder nicht. Wenn die 'imprintCard' sichtbar ist, soll sie auf 'display: none' gesetzt werden bei einem Klick und die 'gameCard' auf 'display: block'. Zudem soll der Text des Buttons soll auf 'Impressum' geändert werden. Wenn die 'imprintCard' nicht sichtbar ist, soll sie auf 'display: block' gesetzt werden und die 'gameCard' auf 'display: none'. Der Text des Buttons soll auf 'Rate Spiel' geändert werden.<br /><br />Wenn auf den Button Überprüfen des Rate Spiels geklickt wird, soll die 'checkTemperature()' Funktion ausgelöst werden. In dieser soll die Open Wheater API abgerufen werden mit diesem URL: 'https://api.openweathermap.org/data/2.5/weather?id=2935022&appid=YOUR_API_KEY'. Denken sie daran, dass sie hier ihren API Key einfügen müssen. Danach muss die abgerufene Temperatur verglichen werden mit der Nutzer Eingabe.Es soll entweder 'Die Temperatur ist zu hoch!', 'Die Temperatur ist zu niedrig!' oder 'Du hast die richtige Temperatur erraten!' angezeigt werden in dem Hinweis Text.",
+  correctAnswer: `<!DOCTYPE html>
+  <html>
+  <head>
+  <title>Abschlussübung</title>
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src='https://code.getmdl.io/1.3.0/material.min.js'></script>
+  </head>
+  <body>
+  <div class="mdl-card mdl-shadow--2dp" id="gameCard">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Rate Spiel</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <p>Errate die aktuelle Temperatur in Stuttgart:</p>
+      <div class="mdl-textfield mdl-js-textfield">
+        <input class="mdl-textfield__input" type="number" id="temperatureInput" value="20">
+        <label class="mdl-textfield__label" for="temperatureInput">Temperatur</label>
+      </div>
+      <p id="hintText">Hier steht bald ein Hinweis.</p>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="checkTemperature()">Überprüfen</button>
+    </div>
+  </div>  
+  <div class="mdl-card mdl-shadow--2dp" id="imprintCard" style="display: none;">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Impressum</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <p>Hier ist das Impressum.</p>
+    </div>
+  </div>
+  <br />
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="imprintButton" onclick="toggleImprintCard()">Impressum</button>
+  <script>
+  function toggleImprintCard() {
+    var imprintCard = document.getElementById('imprintCard');
+    var gameCard = document.getElementById('gameCard');
+    var imprintButton = document.getElementById('imprintButton');
+  
+    if (imprintCard.style.display === 'block') {
+      imprintCard.style.display = 'none';
+      gameCard.style.display = 'block';
+      imprintButton.textContent = 'Impressum';
+    } else {
+      imprintCard.style.display = 'block';
+      gameCard.style.display = 'none';
+      imprintButton.textContent = 'Rate Spiel';
+    }
   }
+  
+  function checkTemperature() {
+    var userInput = parseInt(document.getElementById('temperatureInput').value);
+    var hintText = document.getElementById('hintText');
+  
+    fetch('https://api.openweathermap.org/data/2.5/weather?id=API_TokenKey')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        var temperature = Math.round(data.main.temp - 273.15);
+  
+        if (userInput > temperature) {
+          hintText.innerHTML = 'Die Temperatur ist zu hoch!';
+        } else if (userInput < temperature) {
+          hintText.innerHTML = 'Die Temperatur ist zu niedrig!';
+        } else {
+          hintText.innerHTML = 'Du hast die richtige Temperatur erraten!';
+        }
+        })
+      .catch(function(error) {
+        console.error('Fehler beim API-Aufruf:', error);
+      });
+  }
+  </script>
+  </body>
+  </html>`,
+    language: "html",
+    category: "JavaScript Einheiten",
+  }
+
+
+
+
+
 
 
 

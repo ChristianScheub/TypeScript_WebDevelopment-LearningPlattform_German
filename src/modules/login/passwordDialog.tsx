@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import FooterComponent from '../../base/footerComponent';
@@ -6,9 +6,8 @@ import './passwordDialog.css';
 import NavbarComponent from '../../base/navbarComponent';
 import { MD5 } from 'crypto-js';
 import lessonsList from '../app_configuration/list_lessons';
-import { welcome_headline, welcome_description } from '../app_configuration/app_texts'; 
-
-
+import { welcome_headline, welcome_description } from '../app_configuration/app_texts';
+import { withoutUserLoginEnable,withoutUserLoginName,withoutUserLoginPW } from '../app_configuration/app_settings';
 
 interface UserAccount {
   id: string;
@@ -29,27 +28,31 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
   const [remainingTime, setRemainingTime] = useState(0);
   const [isDialogVisible, setIsDialogVisible] = useState(true);
   const navigate = useNavigate();
+  const usernameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const loginButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const { username, password } = event.currentTarget;
+    handleLogin(username.value, password.value);
+  };
 
-    const userName = event.currentTarget.username.value;
-    const password = event.currentTarget.password.value;
+  const handleWithoutLogin = () => {
+    handleLogin(withoutUserLoginName, withoutUserLoginPW);
+  };
 
-    // Convert the entered password to MD5 hash
+  const handleLogin = (username: string, password: string) => {
     const passwordHash = MD5(password).toString();
-    const usernameHash = MD5(userName).toString();
-
+    const usernameHash = MD5(username).toString();
 
     const matchedUser = userAccountsList.find(
       user => user.userName === usernameHash && user.password === passwordHash
     );
 
     if (matchedUser) {
-      const currentTimestamp = Date.now();
-      const licenseExpiration = Date.parse(matchedUser.licenseDuration);
-
-      if (currentTimestamp > licenseExpiration) {
+      if (Date.now() > Date.parse(matchedUser.licenseDuration)) {
         alert('Ihre Lizenz ist bereits abgelaufen!');
       } else {
         onPasswordEntered();
@@ -57,26 +60,27 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
         if (localStorage.getItem('username-saving-enabled') === 'true') {
           localStorage.setItem('idToken', matchedUser.idToken);
         }
-
-        const firstLessonCategory = lessonsList[0].category;
-        navigate(`/${firstLessonCategory.toLowerCase().replace(/\s/g, '-')}`);
-    
+        navigate(`/${lessonsList[0].category.toLowerCase().replace(/\s/g, '-')}`);
       }
     } else {
-      setWrongAttempts(prevAttempts => prevAttempts + 1);
-      const MAX_ATTEMPTS = 3;
-      const LOCKOUT_DURATION = 30 * 1000; // 30 seconds
-
-      if (wrongAttempts + 1 >= MAX_ATTEMPTS) {
-        setRemainingTime(LOCKOUT_DURATION);
-        setIsDialogVisible(false);
-        setTimeout(() => {
-          setIsDialogVisible(true);
-          setWrongAttempts(0);
-        }, LOCKOUT_DURATION);
-      }
-      alert('Falscher Benutzername oder Passwort!');
+      handleWrongAttempt();
     }
+  };
+
+  const handleWrongAttempt = () => {
+    setWrongAttempts(prevAttempts => prevAttempts + 1);
+    const MAX_ATTEMPTS = 3;
+    const LOCKOUT_DURATION = 30 * 1000;
+
+    if (wrongAttempts + 1 >= MAX_ATTEMPTS) {
+      setRemainingTime(LOCKOUT_DURATION);
+      setIsDialogVisible(false);
+      setTimeout(() => {
+        setIsDialogVisible(true);
+        setWrongAttempts(0);
+      }, LOCKOUT_DURATION);
+    }
+    alert('Falscher Benutzername oder Passwort!');
   };
 
   useEffect(() => {
@@ -105,38 +109,46 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
       <div className="auth-container">
         <div className="description" style={{ textAlign: 'left' }}>
           <h3>{welcome_headline}</h3>
-          <p>
-             { welcome_description}
-          </p>
+          <p>{welcome_description}</p>
           <p>Viel Spaß beim Lernen!</p>
         </div>
         {isDialogVisible ? (
-          <>
-            <div className="auth-card-container">
-              <Card className="auth-card">
-                <Card.Body>
-                  <Card.Title>Login</Card.Title>
-                  <Form onSubmit={handleSubmit}>
-                    <Form.Group controlId="formBasicUsername">
-                      <Form.Control type="text" placeholder="Benutzername" name="username" className="username-input" />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicPassword">
-                      <Form.Control
-                        type="password"
-                        placeholder="Passwort"
-                        name="password"
-                        className="password-input"
-                      />
-                    </Form.Group>
-                    <br />
-                    <Button type="submit" variant="primary" className="login-btn">
-                      Login
+          <div className="auth-card-container">
+            <Card className="auth-card">
+              <Card.Body>
+                <Card.Title>Login</Card.Title>
+                <Form ref={formRef} onSubmit={handleSubmit}>
+                  <Form.Group controlId="formBasicUsername">
+                    <Form.Control
+                      type="text"
+                      placeholder="Benutzername"
+                      name="username"
+                      className="username-input"
+                      ref={usernameRef}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicPassword">
+                    <Form.Control
+                      type="password"
+                      placeholder="Passwort"
+                      name="password"
+                      className="password-input"
+                      ref={passwordRef}
+                    />
+                  </Form.Group>
+                  <br />
+                  <Button type="submit" variant="primary" className="login-btn" ref={loginButtonRef}>
+                    Login
+                  </Button>
+                  {withoutUserLoginEnable && (
+                    <Button type="button" variant="link" className="login-btn" onClick={handleWithoutLogin}>
+                      Kein Account?
                     </Button>
-                  </Form>
-                </Card.Body>
-              </Card>
-            </div>
-          </>
+                  )}
+                </Form>
+              </Card.Body>
+            </Card>
+          </div>
         ) : (
           <div className="auth-card-container">
             <Card className="auth-card">

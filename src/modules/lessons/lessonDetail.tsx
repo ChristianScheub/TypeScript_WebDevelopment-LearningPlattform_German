@@ -6,11 +6,11 @@ import { MonacoDiffEditor } from 'react-monaco-editor';
 import MonacoEditor from 'react-monaco-editor';
 import prettier from 'prettier/standalone';
 import parserHtml from 'prettier/parser-html';
-import ShadowDOM from 'react-shadow';
 import NavbarComponent from '../../base/navbarComponent';
 import htmlToReactParser from 'html-react-parser';
 import parserBabel from 'prettier/parser-babel';
 import parserCss from 'prettier/parser-postcss';
+import { noCodeExampleCategories, showCodeExampleIDs,noCodeExampleIDs } from '../app_configuration/app_settings';
 
 
 
@@ -23,12 +23,20 @@ interface LessonProps {
     exercise: string;
     correctAnswer: string;
     language: string;
+    category: string;
   };
 }
 
 
 const Lesson: React.FC<LessonProps> = ({ lesson }) => {
-  const shouldDisplaySolution = lesson.id !== '15' && lesson.id !== '16' && lesson.id !== '17' && lesson.id !== '18' && lesson.id !== '19' && lesson.id !== '20' && lesson.id !== '21' && parseInt(lesson.id) < 40;
+  // const shouldDisplaySolution = lesson.id !== '15' && lesson.id !== '16' && lesson.id !== '17' && lesson.id !== '18' && lesson.id !== '19' && lesson.id !== '20' && lesson.id !== '21' && parseInt(lesson.id) < 40 && lesson.id !== '55';
+  const shouldDisplaySolution = showCodeExampleIDs.includes(lesson.id) ||
+  !noCodeExampleCategories.includes(lesson.category) && !noCodeExampleIDs.includes(lesson.id) ||
+  lesson.title.includes("Abschlussübung") && !noCodeExampleIDs.includes(lesson.id);
+
+
+
+
 
   const [code, setCode] = useState('');
   const navigate = useNavigate();
@@ -179,6 +187,10 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
 
 
   const formattedCorrectAnswer = formatCode(lesson.correctAnswer, lesson.language);
+  function removeHrefLinks(html: string): string {
+    const regex = /href="(#|link1\.html|link2\.html|link3\.html)"/g;
+    return html.replace(regex, '');
+  }
 
   const handleCompleteLesson = useCallback(() => {
     if (progressSavingEnabled) {
@@ -228,9 +240,29 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
                       <strong>Das Endergebnis soll wie folgt aussehen:</strong>
                     </Card.Text>
 
-                    <ShadowDOM.div>
-                      <div dangerouslySetInnerHTML={{ __html: formattedCorrectAnswer }} />
-                    </ShadowDOM.div>
+                    <iframe
+                      title="Embedded Content"
+                      srcDoc={removeHrefLinks(formattedCorrectAnswer)}
+                      sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+                      style={{ width: '70vw', height: '20vw' }}
+                      onLoad={(event) => {
+                        const iframe = event.target as HTMLIFrameElement;
+                        const script = iframe.contentDocument?.querySelector('script');
+                        if (script && iframe.contentDocument) {
+                          const scriptContent = script.textContent;
+                          const newScript = iframe.contentDocument.createElement('script');
+                          if (iframe.contentDocument.body) {
+                            iframe.contentDocument.body.appendChild(newScript);
+                          }
+                        }
+                      }}
+                    />
+
+
+
+
+
+
                     <br />
                   </>
                 )}

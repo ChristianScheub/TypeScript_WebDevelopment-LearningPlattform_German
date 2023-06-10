@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { footer_text} from '../modules/app_configuration/app_texts';
+
 
 const FooterComponent: React.FC = () => {
   const navigate = useNavigate();
@@ -37,7 +39,8 @@ const FooterComponent: React.FC = () => {
       fluid
       style={Object.assign({}, footerStyle, window.innerWidth <= 767 ? mobileStyle : {})}
     >
-      © 2023 Christian Scheub. All rights reserved.
+      {footer_text}
+      
       <span onClick={() => handleNavigation('/impressum')} style={linkStyle}>
         Impressum
       </span>{' '}
