@@ -1,6 +1,6 @@
 # WebEntwicklungReactApp
 
-Last Edit: 05.2023 <br>
+Last Edit: 06.2023 <br>
 Language: Typescript React Web App<br>
 Azure Web-App: https://proud-pebble-024572f10.3.azurestaticapps.net/
 
