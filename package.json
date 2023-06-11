@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/react": "^13.4.0",
+    "@types/dompurify": "^3.0.2",
     "@types/node": "^16.18.31",
     "@types/react": "^18.2.6",
     "@types/react-bootstrap": "^0.32.32",
@@ -20,7 +21,6 @@
     "react-monaco-editor": "^0.52.0",
     "react-router-dom": "^6.11.2",
     "react-scripts": "^5.0.1",
-    "react-shadow": "^20.0.0",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },

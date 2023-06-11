@@ -10,7 +10,7 @@ import NavbarComponent from '../../base/navbarComponent';
 import htmlToReactParser from 'html-react-parser';
 import parserBabel from 'prettier/parser-babel';
 import parserCss from 'prettier/parser-postcss';
-import { noCodeExampleCategories, showCodeExampleIDs,noCodeExampleIDs } from '../app_configuration/app_settings';
+import { possibleLinksToReplace, noCodeExampleCategories, showCodeExampleIDs, noCodeExampleIDs } from '../app_configuration/app_settings';
 
 
 
@@ -31,8 +31,8 @@ interface LessonProps {
 const Lesson: React.FC<LessonProps> = ({ lesson }) => {
   // const shouldDisplaySolution = lesson.id !== '15' && lesson.id !== '16' && lesson.id !== '17' && lesson.id !== '18' && lesson.id !== '19' && lesson.id !== '20' && lesson.id !== '21' && parseInt(lesson.id) < 40 && lesson.id !== '55';
   const shouldDisplaySolution = showCodeExampleIDs.includes(lesson.id) ||
-  !noCodeExampleCategories.includes(lesson.category) && !noCodeExampleIDs.includes(lesson.id) ||
-  lesson.title.includes("Abschlussübung") && !noCodeExampleIDs.includes(lesson.id);
+    !noCodeExampleCategories.includes(lesson.category) && !noCodeExampleIDs.includes(lesson.id) ||
+    lesson.title.includes("Abschlussübung") && !noCodeExampleIDs.includes(lesson.id);
 
 
 
@@ -187,10 +187,14 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
 
 
   const formattedCorrectAnswer = formatCode(lesson.correctAnswer, lesson.language);
+
+
   function removeHrefLinks(html: string): string {
-    const regex = /href="(#|link1\.html|link2\.html|link3\.html)"/g;
+    const linkRegex = possibleLinksToReplace.map(link => link.replace('.', '\\.'));
+    const regex = new RegExp(`href="(#[^"]*|${linkRegex.join('|')})"`, 'g');
     return html.replace(regex, '');
   }
+  
 
   const handleCompleteLesson = useCallback(() => {
     if (progressSavingEnabled) {
@@ -244,7 +248,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
                       title="Embedded Content"
                       srcDoc={removeHrefLinks(formattedCorrectAnswer)}
                       sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-                      style={{ width: '70vw', height: '20vw' }}
+                      style={{ width: '70vw'}}
                       onLoad={(event) => {
                         const iframe = event.target as HTMLIFrameElement;
                         const script = iframe.contentDocument?.querySelector('script');
@@ -255,14 +259,11 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
                             iframe.contentDocument.body.appendChild(newScript);
                           }
                         }
+                        if (iframe.contentWindow?.document.body) {
+                          const newHeight = iframe.contentWindow.document.body.scrollHeight + 3 * window.innerWidth * 0.01; // 2vw in Pixel umrechnen
+                          iframe.height = `${newHeight}px`;                        }
                       }}
                     />
-
-
-
-
-
-
                     <br />
                   </>
                 )}

@@ -40,7 +40,7 @@ const Datenschutz: React.FC<DatenschutzProps> = ({ passwordEntered }) => {
                         E-Mail: christian.scheub@gmail.com<br />
                         Geschäftsführer/ Inhaber: Christian Scheub<br />
 
-                        Link zum Impressum: https://proud-pebble-024572f10.3.azurestaticapps.net/impressum</p>
+                        Link zum Impressum: https://www.webentwicklung-lernen.de/impressum</p>
 
                     <h4>Arten der verarbeiteten Daten:</h4>
                     <p>– Nutzungsdaten (z.B., besuchte Webseiten, Interesse an Inhalten, Zugriffszeiten).<br />
