@@ -6,7 +6,7 @@ steps:
   persistCredentials: true
   
 - script: |
-    git config --global user.email "Christian.developer.app@gmail.com"
+    git config --global user.email $(githubMail)
     git config --global user.name "ChristianScheub"
   displayName: 'Set Git author'
 
