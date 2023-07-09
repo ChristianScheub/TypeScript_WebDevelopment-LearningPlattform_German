@@ -1,0 +1,52 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+  persistCredentials: true
+  
+- script: |
+    git config --global user.email "Christian.developer.app@gmail.com"
+    git config --global user.name "ChristianScheub"
+  displayName: 'Set Git author'
+
+- script: |
+    rm -rf $(githubRepoName)
+    git clone https://$(devOpsToken)@dev.azure.com/meineupdates/WebGameTypescript/_git/LearnPlattform_WebDevelopment
+    cd $(LearnPlattform_WebDevelopment)
+  displayName: 'Clone DevOps Repo'
+
+# Neues GitHub-Repository als Remote hinzufügen
+- script: |
+    cd LearnPlattform_WebDevelopment
+    git remote add github https://$(githubUsername):$(githubPAT)@github.com/$(githubUsername)/$(githubRepoName).git
+
+    
+    # Git LFS konfigurieren
+    git lfs install
+    git lfs track "*.large-file-extension" # Anpassen auf die Dateierweiterung Ihrer großen Dateien
+
+    # node_modules-Ordner entfernen
+    rm -rf node_modules
+    rm -rf LearnPlattform_WebDevelopment/node_modules
+    rm -rf LearnPlattform_WebDevelopment/node_modules/.cache
+
+    # Alle .pack-Dateien löschen
+    find . -name '*.pack' -type f -delete
+    git add .
+  displayName: 'Exclude unnecessary files'
+  
+
+- script: |
+  
+    git stash    # Änderungen zwischenlagern (stashen)
+    git pull --rebase --strategy-option=theirs https://$(githubUsername):$(githubPAT)@github.com/$(githubUsername)/$(githubRepoName).git main
+    git stash pop    # Die zwischenlagernden Änderungen wiederherstellen
+    git add --all
+    git commit -m "Remove unnecessary pipeline files"
+
+    git rebase --continue
+    git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch azure-pipelines-1.yml azure-pipelines-2.yml azure-pipelines.yml' --prune-empty --tag-name-filter cat -- --all
+
+    git push --force https://$(githubUsername):$(githubPAT)@github.com/$(githubUsername)/$(githubRepoName).git HEAD:main
+  displayName: 'Rebase and Push to GitHub'

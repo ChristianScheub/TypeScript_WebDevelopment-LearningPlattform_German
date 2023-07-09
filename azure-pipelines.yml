@@ -1,0 +1,36 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '16.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      npm uninstall --global yarn
+      rm package-lock.json
+    displayName: 'Clean up dependencies'
+
+  - script: npm install -g yarn
+    displayName: 'Install Yarn'
+
+  - script: yarn install --frozen-lockfile --legacy-peer-deps
+    displayName: 'Install dependencies'
+
+  - script: yarn build
+    displayName: 'Build project'
+
+  - task: AzureStaticWebApp@0
+    inputs:
+      app_location: '/'
+      api_location: 'api'
+      azure_static_web_apps_api_token: $(WebAppToken)
+    

@@ -1,0 +1,10 @@
+
+
+steps:
+- checkout: self
+- script: |
+    git config --global user.email "christian.developer.app@gmail.com"
+    git config --global user.name "ChristianScheub"
+    git remote add github https://$(AzureDevOps.PAT)@github.com/christianscheub/WebEntwicklungReactApp.git
+    git fsck
+    git push github HEAD:refs/heads/main --force
