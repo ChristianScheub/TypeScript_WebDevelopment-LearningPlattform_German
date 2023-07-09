@@ -3,6 +3,8 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { MdAccountCircle } from 'react-icons/md';
 import lessonsList from '../modules/app_configuration/list_lessons';
+import { website_title} from '../modules/app_configuration/app_texts';
+
 
 interface NavbarProps {
   disabled: boolean;
@@ -20,7 +22,7 @@ const NavbarComponent: React.FC<NavbarProps> = ({ disabled }) => {
           <Container>
             <div className="d-flex align-items-center">
               <img src="logo.svg" alt="Logo" style={{ height: '1.5vw' }} className="mr-2" /> {/* Logo hinzugefügt */}
-              <h5 className="m-0">Grundlagen der Webentwicklung</h5>
+              <h5 className="m-0">{ website_title}</h5>
             </div>
           </Container>
         </Navbar.Brand>

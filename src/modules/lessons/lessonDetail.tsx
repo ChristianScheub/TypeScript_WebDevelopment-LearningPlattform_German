@@ -10,9 +10,15 @@ import NavbarComponent from '../../base/navbarComponent';
 import htmlToReactParser from 'html-react-parser';
 import parserBabel from 'prettier/parser-babel';
 import parserCss from 'prettier/parser-postcss';
-import { possibleLinksToReplace, noCodeExampleCategories, showCodeExampleIDs, noCodeExampleIDs } from '../app_configuration/app_settings';
+
+import { js as beautify } from 'js-beautify';
+import phpPlugin from "@prettier/plugin-php/standalone";
 
 
+import {
+  possibleLinksToReplace
+} from '../app_configuration/app_settings';
+var javaToJavascript = require('java-to-javascript');
 
 interface LessonProps {
   lesson: {
@@ -23,21 +29,17 @@ interface LessonProps {
     exercise: string;
     correctAnswer: string;
     language: string;
+    unitTest: string;
     category: string;
+    showDisplaySolution: boolean;
   };
 }
 
-
 const Lesson: React.FC<LessonProps> = ({ lesson }) => {
-  // const shouldDisplaySolution = lesson.id !== '15' && lesson.id !== '16' && lesson.id !== '17' && lesson.id !== '18' && lesson.id !== '19' && lesson.id !== '20' && lesson.id !== '21' && parseInt(lesson.id) < 40 && lesson.id !== '55';
-  const shouldDisplaySolution = showCodeExampleIDs.includes(lesson.id) ||
-    !noCodeExampleCategories.includes(lesson.category) && !noCodeExampleIDs.includes(lesson.id) ||
-    lesson.title.includes("Abschlussübung") && !noCodeExampleIDs.includes(lesson.id);
 
+  const shouldDisplaySolution = lesson.showDisplaySolution;
 
-
-
-
+  const [showBackButton, setShowBackButton] = useState(false);
   const [code, setCode] = useState('');
   const navigate = useNavigate();
   const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(null);
@@ -85,10 +87,6 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
     return parsed;
   };
 
-
-
-
-
   useEffect(() => {
     if (completed.includes(lesson.id)) {
       setIsAnswerCorrect(true);
@@ -128,7 +126,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
     const correctAnswer = String(lesson.correctAnswer).replace(/\s/g, '');
 
     const similarity = calculateSimilarity(userAnswer, correctAnswer) * 100;
-    if (similarity >= 90) {
+    if (similarity >= 85) {
       alert(`Ihr Code ist zu ${similarity.toFixed(2)}% korrekt! Glückwunsch!`);
       setIsAnswerCorrect(true);
       if (progressSavingEnabled) {
@@ -165,15 +163,54 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
           case 'js':
             parser = 'babel';
             break;
+          case 'java':
+            parser = 'java';
+            break;
+          case 'php':
+            parser = 'php';
+            code = code.replace('<?php', '<?php\n');
+
+             const lastIndex = code.lastIndexOf('?>');
+             code = `${code.slice(0, lastIndex)}\n${code.slice(lastIndex)}`;
+    
+
+            break;
+          case 'csharp':
+            parser = 'csharp';
+            break;
           default:
             // fallback to HTML if language is not recognized
             parser = 'html';
         }
 
-        return prettier.format(code, {
-          parser: parser,
-          plugins: [parserHtml, parserBabel, parserCss],
-        });
+        if (parser === 'java') {
+        
+
+          const formattedJavaCode1 = beautify(code, {  indent_size: 2,
+            indent_with_tabs: false,
+            eol: '\n',
+            preserve_newlines: true,
+            brace_style: 'collapse',
+            space_in_empty_paren: true,
+            keep_array_indentation: true,});
+         
+
+
+          console.log(formattedJavaCode1);
+
+          var jsString = javaToJavascript( formattedJavaCode1 );
+          console.log(jsString);
+
+          //Now same for unit tests
+
+
+          return formattedJavaCode1;
+        } else {
+          return prettier.format(code, {
+            parser: parser,
+            plugins: [parserHtml, parserBabel, parserCss,phpPlugin],
+          });
+        }
       } catch (error) {
         console.error('Fehler beim Formatieren des Codes:', error);
         return code;
@@ -181,40 +218,32 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
     },
     []
   );
-
-
-
-
-
+  
   const formattedCorrectAnswer = formatCode(lesson.correctAnswer, lesson.language);
 
-
   function removeHrefLinks(html: string): string {
-    const linkRegex = possibleLinksToReplace.map(link => link.replace('.', '\\.'));
+    const linkRegex = possibleLinksToReplace.map((link) => link.replace('.', '\\.'));
     const regex = new RegExp(`href="(#[^"]*|${linkRegex.join('|')})"`, 'g');
     return html.replace(regex, '');
   }
-  
 
   const handleCompleteLesson = useCallback(() => {
     if (progressSavingEnabled) {
       const completedLessons = JSON.parse(localStorage.getItem('completedLessons') || '[]');
       completedLessons.push(lesson.id);
       localStorage.setItem('completedLessons', JSON.stringify(completedLessons));
-      setIsAnswerCorrect(true);
-      let successLessonButton1 = document.getElementById('sucessLesson');
-      if (successLessonButton1) {
-        successLessonButton1.style.display = 'none';
-      }
     }
+    setShowBackButton(true);
+    setIsAnswerCorrect(true);
+    let successLessonButton1 = document.getElementById('successLesson');
+    if (successLessonButton1) {
+      successLessonButton1.style.display = 'none';
+    }
+
   }, [lesson.id, progressSavingEnabled]);
-
-
 
   const parseHTML = (html: string) => parse(html);
   const parseContent = (html: string) => parseContentFunction(html);
-
-
 
   return (
     <div>
@@ -243,12 +272,11 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
                     <Card.Text>
                       <strong>Das Endergebnis soll wie folgt aussehen:</strong>
                     </Card.Text>
-
                     <iframe
                       title="Embedded Content"
                       srcDoc={removeHrefLinks(formattedCorrectAnswer)}
                       sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-                      style={{ width: '70vw'}}
+                      style={{ width: '70vw' }}
                       onLoad={(event) => {
                         const iframe = event.target as HTMLIFrameElement;
                         const script = iframe.contentDocument?.querySelector('script');
@@ -260,8 +288,11 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
                           }
                         }
                         if (iframe.contentWindow?.document.body) {
-                          const newHeight = iframe.contentWindow.document.body.scrollHeight + 3 * window.innerWidth * 0.01; // 2vw in Pixel umrechnen
-                          iframe.height = `${newHeight}px`;                        }
+                          const newHeight =
+                            iframe.contentWindow.document.body.scrollHeight +
+                            3 * window.innerWidth * 0.01; // 2vw in Pixel umrechnen
+                          iframe.height = `${newHeight}px`;
+                        }
                       }}
                     />
                     <br />
@@ -271,7 +302,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
                 <MonacoEditor
                   width="100%"
                   height="300px"
-                  language="html"
+                  language={lesson.language}
                   theme="vs-dark"
                   value={code}
                   onChange={handleCodeChange}
@@ -283,9 +314,23 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
               </>
             )}
             {lesson.exercise === '' && progressSavingEnabled && !completed.includes(lesson.id) && (
-              <Button id='sucessLesson' variant="success" onClick={handleCompleteLesson}>
-                Abgeschlossen
-              </Button>
+              <div>
+                {showBackButton === false ? (
+                  <Button id="successLesson" variant="success" onClick={handleCompleteLesson}>
+                    Abgeschlossen
+                  </Button>
+                ) : (
+                  <MdArrowBack
+                    style={{
+                      cursor: 'pointer',
+                      fontSize: '40px',
+                      backgroundColor: '#8BC34A',
+                      borderRadius: '5px',
+                    }}
+                    onClick={() => navigate(-1)}
+                  />
+                )}
+              </div>
             )}
           </Card.Body>
         </Card>
@@ -297,11 +342,10 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
             <Card.Header as="h2">Lösung</Card.Header>
             <Card.Body style={{ height: 'auto' }}>
               <Card.Text>Hier wird die Lösung (links) mit Ihrem Code (rechts) verglichen. </Card.Text>
-
               <MonacoDiffEditor
                 width="100%"
                 height="300px"
-                language="html"
+                language={lesson.language}
                 theme="vs-dark"
                 original={formattedCorrectAnswer}
                 value={code}

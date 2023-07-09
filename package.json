@@ -12,8 +12,9 @@
     "bootstrap": "^5.2.3",
     "crypto-js": "^4.1.1",
     "html-react-parser": "^3.0.16",
+    "java-to-javascript": "^0.1.15",
+    "js-beautify": "^1.14.8",
     "monaco-editor": "0.36.1",
-    "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
@@ -53,6 +54,10 @@
   "author": "Christian Scheub",
   "license": "ISC",
   "devDependencies": {
-    "@types/crypto-js": "^4.1.1"
+    "@prettier/plugin-php": "^0.19.6",
+    "@types/crypto-js": "^4.1.1",
+    "@types/js-beautify": "^1.13.3",
+    "prettier": "^2.8.8",
+    "prettier-plugin-java": "^2.1.0"
   }
 }

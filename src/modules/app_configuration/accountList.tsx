@@ -14,7 +14,7 @@ const generateIdToken = (): string => {
       userName: '1cb0c78fef6239036aca221239188f4d',
       password: 'bc15f308b068911ccc0ac032af7ef9d4',
       description: 'Willkommen zur Webentwicklungslernplattform! Sie haben sich eingeloggt ohne einen Account! Dies ist nur bis zu dem 15.06.2023 noch möglich.     ',
-      licenseDuration: '2023-06-15',
+      licenseDuration: '2023-07-15',
     },
     {
       id: '2',

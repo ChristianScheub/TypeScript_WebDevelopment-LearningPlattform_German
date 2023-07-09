@@ -7,7 +7,7 @@ import NavbarComponent from '../../base/navbarComponent';
 import { MD5 } from 'crypto-js';
 import lessonsList from '../app_configuration/list_lessons';
 import { welcome_headline, welcome_description } from '../app_configuration/app_texts';
-import { withoutUserLoginEnable,withoutUserLoginName,withoutUserLoginPW } from '../app_configuration/app_settings';
+import { withoutUserLoginName,withoutUserLoginPW } from '../app_configuration/app_settings';
 
 interface UserAccount {
   id: string;
@@ -32,6 +32,10 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
   const passwordRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const loginButtonRef = useRef<HTMLButtonElement>(null);
+
+  const withoutUserLoginEnable =
+  userAccountsList[0].userName === MD5(withoutUserLoginName).toString() &&
+  userAccountsList[0].password === MD5(withoutUserLoginPW).toString();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
