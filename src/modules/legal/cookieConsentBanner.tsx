@@ -60,6 +60,13 @@ const CookieConsentBanner: React.FC = () => {
             <div className="cookie-overlay-content">
               <div className="cookie-overlay-text">
                 Diese Website verwendet den lokalen Speicher, um Ihren Fortschritt in den Unterrichtseinheiten, Ihren Benutzernamen sowie Ihr Einverständnis hierzu lokal in Ihrem Browser zu speichern. <br /> Es werden allerdings keine Cookies gespeichert und keine Daten an unsere Server versendet, da diese Webanwendung ohne einen zusätzlichen Server von uns funktioniert. <br /> Klicken Sie auf "Einstellungen anpassen", um einzeln auszuwählen, was lokal gespeichert wird, oder auf "Alle ablehnen", falls Sie damit nicht einverstanden sind. <br /> Falls Sie nicht einverstanden sind, funktionieren einzelne Funktionen wie das Dashboard oder der Lernfortschritt nicht.
+              <br />
+                <a href="https://www.webentwicklung-lernen.de/impressum">
+                  Impressum
+                </a>     <br />
+                <a href="https://www.webentwicklung-lernen.de/datenschutz">
+                  Datenschutz
+                </a>
               </div>
               <div className="button-group">
                 <Button variant="primary" onClick={onAccept} style={{ margin: '0 0.5vw' }}>
