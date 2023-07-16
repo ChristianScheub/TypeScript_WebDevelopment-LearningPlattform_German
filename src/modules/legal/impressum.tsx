@@ -35,7 +35,7 @@ const Impressum: React.FC<ImpressumProps> = ({ passwordEntered }) => {
           </Card.Header>
           <Card.Body>
             <Card.Text>
-            {impressum_text.split('\n').map((text, index) => (
+            {impressum_text.split('<br />').map((text, index) => (
                 <React.Fragment key={index}>
                   {text}
                   <br />

@@ -15,7 +15,7 @@ const Datenschutz: React.FC<DatenschutzProps> = ({ passwordEntered }) => {
 
   const parseContentFunction = (code: string) => {
     const boldRegex = /<strong>(.*?)<\/strong>/g;
-    const lines = code.split('\n');
+    const lines = code.split('<br />');
     const parsed = lines.map((line, index) => {
       let currentIndex = 0;
       const elements = [];
