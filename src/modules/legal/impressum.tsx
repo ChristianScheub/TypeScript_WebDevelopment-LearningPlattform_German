@@ -61,11 +61,6 @@ const Impressum: React.FC<ImpressumProps> = ({ passwordEntered }) => {
               aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir
               derartige Inhalte umgehend entfernen.
             </Card.Text>
-            {/* Other sections of the Impressum go here */}
-            {/* Haftungsausschluss – Disclaimer */}
-            {/* Haftungsbeschränkung für externe Links */}
-            {/* Urheberrecht */}
-            {/* Please refer to the provided template to fill in these sections */}
           </Card.Body>
         </Card>
       </div>
