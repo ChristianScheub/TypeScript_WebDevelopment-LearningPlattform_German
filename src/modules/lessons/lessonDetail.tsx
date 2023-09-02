@@ -38,7 +38,7 @@ interface LessonProps {
     quizOptions: string;
     quizSolution: string;
     category: string;
-    showDisplaySolution: boolean;
+    showDisplaySolution: string;
   };
 }
 
