@@ -5,55 +5,23 @@ import { MdArrowBack } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import NavbarComponent from '../../base/navbarComponent';
 import userAccountsList from '../app_configuration/accountList';
-
-interface Lesson {
-  id: string;
-  category: string;
-  // ...
-}
-
-interface UserAccount {
-  idToken: string;
-  description: string;
-  licenseDuration: string;
-}
-
-interface CategoryProgress {
-  category: string;
-  completed: number;
-  pending: number;
-  total: number;
-}
+import {
+  getProgressByCategory,
+  xpValueOfCompletedLessonInCategory,
+} from "./categoryProgress";
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
+
   const idToken = localStorage.getItem('idToken') || '';
-  const currentUserAccount = userAccountsList.find((user: UserAccount) => user.idToken === idToken);
+  const currentUserAccount = userAccountsList.find(user => user.idToken === idToken);
   const progressEnabled = localStorage.getItem('progress-saving-enabled') != null;
 
   const completedLessons: string[] = JSON.parse(localStorage.getItem('completedLessons') || '[]');
   const totalLessons: number = lessonsList.length;
   const pendingLessons: number = totalLessons - completedLessons.length;
   const progress: number = Math.round((completedLessons.length / totalLessons) * 100);
-
-  const getProgressByCategory = (): CategoryProgress[] => {
-    const categories: string[] = lessonsList.map((lesson: Lesson) => lesson.category);
-    const uniqueCategories: string[] = Array.from(new Set(categories));
-    const progressByCategory: CategoryProgress[] = [];
-
-    uniqueCategories.forEach((category: string) => {
-      const completed: number = completedLessons.filter((lessonId: string) => {
-        const lesson: Lesson | undefined = lessonsList.find((lesson: Lesson) => lesson.id.toString() === lessonId);
-        return lesson && lesson.category === category;
-      }).length;
-      const total: number = lessonsList.filter((lesson: Lesson) => lesson.category === category).length;
-      const pending: number = total - completed;
-
-      progressByCategory.push({ category, completed, pending, total });
-    });
-
-    return progressByCategory;
-  };
+  const progressByCategory = getProgressByCategory();
 
   return (
     <div>
@@ -93,19 +61,23 @@ const Dashboard: React.FC = () => {
                 <Card.Text>Ausstehende Lektionen: {pendingLessons}</Card.Text>
               </Card.Text>
               <br />
-              {getProgressByCategory().map(({ category, completed, pending, total }: CategoryProgress) => (
-                <Card.Text key={category}>
-                  <strong>{category} Einheiten:</strong>
-                  <ProgressBar now={completed} max={total} label={`${completed} / ${total}`} />
-                  <Card.Text>Erfolgreich abgeschlossene Einheiten: {completed}</Card.Text>
-                  <Card.Text>Ausstehende Einheiten: {pending}</Card.Text>
-                  <br />
-                </Card.Text>
-              ))}
+              {progressByCategory.map(({ category, completed, pending, total }) => {
+                const xpValue = xpValueOfCompletedLessonInCategory(category);
+                return (
+                  <div key={category}>
+                    <Card.Text>
+                      <strong>{category} Einheiten:</strong>
+                      <ProgressBar now={completed} max={total} label={`${completed} / ${total}`} />
+                      <Card.Text>Erfolgreich abgeschlossene Einheiten: {completed} (XP: {completed * xpValue})</Card.Text>
+                      <Card.Text>Ausstehende Einheiten: {pending} (XP: {pending * xpValue})</Card.Text>
+                      <br />
+                    </Card.Text>
+                  </div>
+                );
+              })}
             </Card.Body>
           </Card>
         )}
-        {/* Weitere Karten oder Informationen hier hinzufügen */}
       </div>
     </div>
   );
