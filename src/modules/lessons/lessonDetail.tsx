@@ -33,17 +33,18 @@ interface LessonProps {
     exercise: string;
     correctAnswer: string;
     language: string;
+    category: string;
     unitTest: string;
+    showDisplaySolution: string;
     quizText: string;
     quizOptions: string;
     quizSolution: string;
-    category: string;
-    showDisplaySolution: string;
   };
 }
 
 const Lesson: React.FC<LessonProps> = ({ lesson }) => {
   const shouldDisplaySolution = lesson.showDisplaySolution;
+  const [similarity, setSimilarity] = useState<number | null>(null);
   const optionsArray = lesson.quizOptions
     .split(";")
     .filter((option) => option !== "");
@@ -284,23 +285,27 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
     }
   }, [lesson.id, progressSavingEnabled]);
 
-
   const checkAnswerCode = useCallback(() => {
-    const userAnswer = String(code).replace(/\s/g, '');
-    const correctAnswer = String(lesson.correctAnswer).replace(/\s/g, '');
+    const userAnswer = String(code).replace(/\s/g, "");
+    const correctAnswer = String(lesson.correctAnswer).replace(/\s/g, "");
 
     const similarity = calculateSimilarity(userAnswer, correctAnswer) * 100;
+    setSimilarity(similarity);
     if (similarity >= 85) {
-      alert(`Ihr Code ist zu ${similarity.toFixed(2)}% korrekt! Glückwunsch!`);
       setIsAnswerCorrect(true);
       setIsCorrect(true);
       saveCompletedLesson(lesson.id)();
     } else {
-      alert('Falsch, versuchen Sie es später erneut! Unten sehen Sie nun die Lösung!');
       setIsAnswerCorrect(false);
     }
     setShowSolution(true);
-  }, [code, lesson.correctAnswer, lesson.id, calculateSimilarity, progressSavingEnabled]);
+  }, [
+    code,
+    lesson.correctAnswer,
+    lesson.id,
+    calculateSimilarity,
+    progressSavingEnabled,
+  ]);
 
   const parseHTML = (html: string) => parse(html);
   const parseContent = (html: string) => parseContentFunction(html);
@@ -466,6 +471,19 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
           <Card style={{ width: "100vw" }}>
             <Card.Header as="h2">Lösung</Card.Header>
             <Card.Body style={{ height: "auto" }}>
+
+              <div
+                className={`alert ${
+                  (similarity ?? 0) >= 85 ? "alert-success" : "alert-danger"
+                }`}
+                role="alert"
+              >
+                Ihr Code ist zu {(similarity ?? 0).toFixed(2)}% korrekt!{" "}
+                {(similarity ?? 0) >= 85
+                  ? "Glückwunsch!"
+                  : "Versuchen Sie es erneut."}
+              </div>
+
               <Card.Text>
                 Hier wird die Lösung (links) mit Ihrem Code (rechts) verglichen.{" "}
               </Card.Text>
