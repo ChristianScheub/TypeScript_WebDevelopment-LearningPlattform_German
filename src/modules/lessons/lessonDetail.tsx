@@ -90,7 +90,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
 
   const parseContentFunction = (code: string) => {
     const boldRegex = /<strong>(.*?)<\/strong>/g;
-    const lines = code.split("<br />");
+    const lines = code.split("\n");
     const parsed = lines.map((line, index) => {
       let currentIndex = 0;
       const elements = [];
