@@ -8,6 +8,7 @@ import userAccountsList from '../app_configuration/accountList';
 import {
   getProgressByCategory,
   xpValueOfCompletedLessonInCategory,
+  getProgressByCategoryIn1000
 } from "./categoryProgress";
 
 const Dashboard: React.FC = () => {
@@ -22,6 +23,14 @@ const Dashboard: React.FC = () => {
   const pendingLessons: number = totalLessons - completedLessons.length;
   const progress: number = Math.round((completedLessons.length / totalLessons) * 100);
   const progressByCategory = getProgressByCategory();
+  const progressByCategoryIn1000 = getProgressByCategoryIn1000();
+
+  const combinedProgress = progressByCategory.map((progress, index) => ({
+    ...progress,
+    completedXP: progressByCategoryIn1000[index].completed,
+    pendingXP: progressByCategoryIn1000[index].pending,
+    totalXP: progressByCategoryIn1000[index].total,
+  }));
 
   return (
     <div>
@@ -61,20 +70,19 @@ const Dashboard: React.FC = () => {
                 <Card.Text>Ausstehende Lektionen: {pendingLessons}</Card.Text>
               </Card.Text>
               <br />
-              {progressByCategory.map(({ category, completed, pending, total }) => {
-                const xpValue = xpValueOfCompletedLessonInCategory(category);
-                return (
-                  <div key={category}>
-                    <Card.Text>
-                      <strong>{category} Einheiten:</strong>
-                      <ProgressBar now={completed} max={total} label={`${completed} / ${total}`} />
-                      <Card.Text>Erfolgreich abgeschlossene Einheiten: {completed} (XP: {completed * xpValue})</Card.Text>
-                      <Card.Text>Ausstehende Einheiten: {pending} (XP: {pending * xpValue})</Card.Text>
-                      <br />
-                    </Card.Text>
-                  </div>
-                );
-              })}
+              {combinedProgress.map(({ category, completed, completedXP, pending, pendingXP, total, totalXP }) => {
+      return (
+        <div key={category}>
+          <Card.Text>
+            <strong>{category} Einheiten:</strong>
+            <ProgressBar now={completed} max={total} label={`${completed} / ${total}`} />
+            <Card.Text>Erfolgreich abgeschlossene Einheiten: {completed} (XP: {completedXP})</Card.Text>
+            <Card.Text>Ausstehende Einheiten: {pending} (XP: {pendingXP})</Card.Text>
+            <br />
+          </Card.Text>
+        </div>
+      );
+    })}
             </Card.Body>
           </Card>
         )}
@@ -84,3 +92,4 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
+
