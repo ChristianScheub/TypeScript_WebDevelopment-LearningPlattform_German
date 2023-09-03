@@ -347,7 +347,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
             {lesson.exercise !== "" && (
               <>
                 <h3>Übung</h3>
-                <Card.Text>{parseHTML(lesson.exercise)}</Card.Text>
+                <Card.Text>{parseContent(lesson.exercise)}</Card.Text>
               </>
             )}
 
