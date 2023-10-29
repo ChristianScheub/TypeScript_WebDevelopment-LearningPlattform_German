@@ -10,12 +10,12 @@ import NavbarComponent from "../../base/navbarComponent";
 import htmlToReactParser from "html-react-parser";
 import parserBabel from "prettier/parser-babel";
 import parserCss from "prettier/parser-postcss";
+import CongratulationsOverlay from "./sucessAnimation";
 import "./lessonDetail.css";
 import {
   getProgressByCategoryIn1000,
   CategoryProgress,
   saveCompletedLesson,
-  xpValueOfCompletedLessonInCategory,
 } from "../dashboard/categoryProgress";
 
 import { js as beautify } from "js-beautify";
@@ -52,8 +52,6 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
   const closeOverlay = () => {
     setIsCorrect(null);
   };
-  const targetXP = xpValueOfCompletedLessonInCategory(lesson.category);
-  const [animatedXP, setAnimatedXP] = useState(0);
 
   const [showBackButton, setShowBackButton] = useState(false);
   const [code, setCode] = useState("");
@@ -68,17 +66,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
   const progressSavingEnabled =
     localStorage.getItem("progress-saving-enabled") === "true";
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (animatedXP < targetXP) {
-        setAnimatedXP((prevXP) => prevXP + 1);
-      } else {
-        clearInterval(timer);
-      }
-    }, 5);
 
-    return () => clearInterval(timer);
-  }, [animatedXP, targetXP]);
 
   const parse = (code: string) => {
     try {
@@ -161,17 +149,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
     []
   );
 
-  const currentCategoryProgress: CategoryProgress | undefined =
-    getProgressByCategoryIn1000().find(
-      (progress) => progress.category === lesson.category
-    );
 
-  const currentCompletedXP: number = currentCategoryProgress
-    ? currentCategoryProgress.completed
-    : 0;
-  const currentTotalXP: number = currentCategoryProgress
-    ? currentCategoryProgress.total
-    : 0;
 
   const checkQuizAnswer = useCallback(() => {
     const form = formRef.current;
@@ -313,18 +291,10 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
   return (
     <div>
       {isCorrect === true && (
-        <div className="overlay">
-          <div className="congratulationAnimation">
-            <h1>Gratulation!</h1>
-            <div className="rocketAnimation">🚀</div>
-            <p>+ {animatedXP} XP</p>
-            <p>{`${currentCompletedXP}/${currentTotalXP} XP schon erreicht in dem Kapitel ${lesson.category}!`}</p>{" "}
-            {/* Hier haben wir +1 hinzugefügt, weil Sie gerade eine XP verdient haben. */}
-            <button className="closeButton" onClick={closeOverlay}>
-              &times;
-            </button>
-          </div>
-        </div>
+        <CongratulationsOverlay
+        lessonCategory={lesson.category}
+        closeOverlay={closeOverlay}
+      />
       )}
       <NavbarComponent disabled={false} />
       <div className="after-login-container">
