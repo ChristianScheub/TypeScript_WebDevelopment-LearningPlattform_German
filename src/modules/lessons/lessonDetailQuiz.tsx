@@ -7,18 +7,16 @@ interface QuizComponentProps {
     quizSolution: string;
     quizOptions: string;
   };
-  isCorrect: boolean | null;
+  showCongratulationsOverlay: boolean | null;
   checkQuizAnswer: () => void;
   formRef: React.RefObject<HTMLFormElement>;
-  optionsArray: string[];
 }
 
 const QuizComponent: React.FC<QuizComponentProps> = ({
   lesson,
-  isCorrect,
+  showCongratulationsOverlay,
   checkQuizAnswer,
   formRef,
-  optionsArray,
 }) => {
   if (
     !lesson.quizText ||
@@ -27,6 +25,10 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
   ) {
     return null;
   }
+
+  const optionsArray = lesson.quizOptions
+    .split(";")
+    .filter((option) => option !== "");
 
   
 
@@ -45,12 +47,12 @@ const QuizComponent: React.FC<QuizComponentProps> = ({
             />
           </Form.Group>
         ))}
-        {isCorrect !== null && (
-          <Alert variant={isCorrect ? 'success' : 'danger'}>
-            {isCorrect ? 'Richtig!' : 'Leider falsch.'}
+        {showCongratulationsOverlay !== null && (
+          <Alert variant={showCongratulationsOverlay ? 'success' : 'danger'}>
+            {showCongratulationsOverlay ? 'Richtig!' : 'Leider falsch.'}
           </Alert>
         )}
-        {!isCorrect && (
+        {!showCongratulationsOverlay && (
           <Button variant="primary" onClick={checkQuizAnswer}>
             Überprüfen
           </Button>

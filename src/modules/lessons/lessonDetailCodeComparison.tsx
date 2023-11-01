@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { Card } from 'react-bootstrap';
 import { MonacoDiffEditor } from 'react-monaco-editor'; // Stellen Sie sicher, dass dieser Import korrekt ist, basierend auf Ihrem Projekt.
 import { js as beautify } from "js-beautify";

@@ -1,19 +1,14 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, Button, Alert, Form } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { MdArrowBack, MdCheckCircle } from "react-icons/md";
-
-
 import NavbarComponent from "../../base/navbarComponent";
-
 import CongratulationsOverlay from "./sucessAnimation";
 import QuizComponent from "./lessonDetailQuiz";
 import CodeEditor from "./lesssonDetailCodeExercise";
 import CodeComparison from "./lessonDetailCodeComparison";
 import "./lessonDetail.css";
-import {
-  saveCompletedLesson,
-} from "../dashboard/categoryProgress";
+import { saveCompletedLesson } from "../dashboard/categoryProgress";
 
 interface LessonProps {
   lesson: {
@@ -34,28 +29,22 @@ interface LessonProps {
 }
 
 const Lesson: React.FC<LessonProps> = ({ lesson }) => {
-  const [similarity, setSimilarity] = useState<number | null>(null);
-  const optionsArray = lesson.quizOptions
-    .split(";")
-    .filter((option) => option !== "");
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const closeOverlay = () => {
-    setIsCorrect(null);
-  };
-
-  const [showBackButton, setShowBackButton] = useState(false);
-  const [code, setCode] = useState("");
   const navigate = useNavigate();
+
+  const [similarity, setSimilarity] = useState<number | null>(null);
+  const [code, setCode] = useState("");
+
+  const [showCongratulationsOverlay, setShowCongratulationsOverlay] = useState<boolean | null>(null);
+  const [showCodeSolution, setShowCodeSolution] = useState(false);
+
   const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const [completed] = useState<string[]>(
-    JSON.parse(localStorage.getItem("completedLessons") || "[]")
-  );
-  const [showCodeSolution, setShowSolution] = useState(false);
-  const progressSavingEnabled =
-    localStorage.getItem("progress-saving-enabled") === "true";
-
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("completedLessons") || "[]").includes(lesson.id)) {
+      setIsAnswerCorrect(true);
+    }
+  }, [lesson.id]);
 
   const parseContentFunction = (code: string) => {
     const boldRegex = /<strong>(.*?)<\/strong>/g;
@@ -87,12 +76,6 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
     });
     return parsed;
   };
-
-  useEffect(() => {
-    if (completed.includes(lesson.id)) {
-      setIsAnswerCorrect(true);
-    }
-  }, [lesson.id, completed]);
 
   const calculateSimilarity = useCallback(
     (str1: string, str2: string): number => {
@@ -131,6 +114,11 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
   );
 
 
+  const courseDone = useCallback(() => {
+    saveCompletedLesson(lesson.id)();
+    setIsAnswerCorrect(true);
+    setShowCongratulationsOverlay(true);
+  }, [lesson.id]);
 
   const checkQuizAnswer = useCallback(() => {
     const form = formRef.current;
@@ -138,67 +126,49 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
       const formData = new FormData(form);
       const selectedOption = formData.get("quizOption") as string;
       if (selectedOption === lesson.quizSolution) {
-        setIsCorrect(true);
-        saveCompletedLesson(lesson.id)();
-
-        setShowBackButton(true);
-        setIsAnswerCorrect(true);
-      } else {
-        setIsCorrect(false);
+        courseDone();
+      }
+      else {
+        setShowCongratulationsOverlay(false);
       }
     }
-  }, [lesson.quizSolution, lesson.id]);
+  }, [lesson.quizSolution, courseDone]);
 
-  const handleCodeChange = useCallback((newCode: string) => {
-    setCode(newCode);
-  }, []);
-
-
-
-
-
-  const checkAnswerWithoutAll = useCallback(() => {
-    saveCompletedLesson(lesson.id)();
-    setShowBackButton(true);
-    setIsAnswerCorrect(true);
-    setIsCorrect(true);
+  const courseDoneWithoutExercise = useCallback(() => {
+    courseDone();
     let successLessonCodeButton1 = document.getElementById("successCodeLesson");
     if (successLessonCodeButton1) {
       successLessonCodeButton1.style.display = "none";
     }
-  }, [lesson.id]);
+  }, [courseDone]);
 
   const checkAnswerCode = useCallback(() => {
-    console.log("LOL");
     const userAnswer = String(code).replace(/\s/g, "");
     const correctAnswer = String(lesson.correctAnswer).replace(/\s/g, "");
-
     const similarity = calculateSimilarity(userAnswer, correctAnswer) * 100;
+
     setSimilarity(similarity);
     console.log(similarity);
     if (similarity >= 85) {
-      setIsAnswerCorrect(true);
-      setIsCorrect(true);
-      saveCompletedLesson(lesson.id)();
+      courseDone();
     } else {
       setIsAnswerCorrect(false);
     }
-    setShowSolution(true);
+    setShowCodeSolution(true);
   }, [
     code,
     lesson.correctAnswer,
-    lesson.id,
+    courseDone,
     calculateSimilarity,
   ]);
 
-  const parseContent = (html: string) => parseContentFunction(html);
 
   return (
     <div>
-      {isCorrect === true && (
+      {showCongratulationsOverlay === true && (
         <CongratulationsOverlay
           lessonCategory={lesson.category}
-          closeOverlay={closeOverlay}
+          closeOverlay={() => setShowCongratulationsOverlay(null)}
         />
       )}
       <NavbarComponent disabled={false} />
@@ -218,20 +188,19 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
             )}
           </Card.Header>
           <Card.Body style={{ height: "auto" }}>
-            <Card.Text>{parseContent(lesson.content)}</Card.Text>
+            <Card.Text>{parseContentFunction(lesson.content)}</Card.Text>
             {lesson.exercise !== "" && (
               <>
                 <h3>Übung</h3>
-                <Card.Text>{parseContent(lesson.exercise)}</Card.Text>
+                <Card.Text>{parseContentFunction(lesson.exercise)}</Card.Text>
               </>
             )}
 
             <QuizComponent
               lesson={lesson}
-              isCorrect={isCorrect}
+              showCongratulationsOverlay={showCongratulationsOverlay}
               checkQuizAnswer={checkQuizAnswer}
               formRef={formRef}
-              optionsArray={optionsArray}
             />
 
             <CodeEditor
@@ -239,7 +208,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
               showSolution={lesson.showDisplaySolution === "true"}
               codeSolution={lesson.correctAnswer}
               code={code}
-              handleCodeChange={handleCodeChange}
+              handleCodeChange={setCode}
               checkAnswerCode={checkAnswerCode}
             />
 
@@ -247,14 +216,13 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
               lesson.quizText === "" &&
               lesson.quizSolution === "" &&
               lesson.quizOptions === "" &&
-              progressSavingEnabled &&
-              !completed.includes(lesson.id) && (
+              localStorage.getItem("progress-saving-enabled") === "true" && (
                 <div>
-                  {showBackButton === false ? (
+                  {isAnswerCorrect === false ? (
                     <Button
                       id="successCodeLesson"
                       variant="success"
-                      onClick={checkAnswerWithoutAll}
+                      onClick={courseDoneWithoutExercise}
                     >
                       Abgeschlossen
                     </Button>
@@ -280,7 +248,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
           similarity={similarity}
           lessonLanguage={lesson.language}
           codeSolution={lesson.correctAnswer}
-          showCodeSolution = {showCodeSolution}
+          showCodeSolution={showCodeSolution}
           code={code}
         />
       </div>
