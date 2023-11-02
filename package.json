@@ -61,6 +61,7 @@
     "@babel/preset-typescript": "^7.23.2",
     "@prettier/plugin-php": "^0.19.6",
     "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/user-event": "^14.5.1",
     "@types/crypto-js": "^4.1.1",
     "@types/jest": "^29.5.7",
     "@types/js-beautify": "^1.13.3",

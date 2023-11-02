@@ -39,8 +39,11 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { username, password } = event.currentTarget;
-    handleLogin(username.value, password.value);
+    if (usernameRef.current && passwordRef.current) {
+      handleLogin(usernameRef.current.value, passwordRef.current.value);
+    } else {
+      console.error('Refs are null');
+    }
   };
 
   const handleWithoutLogin = () => {
@@ -129,6 +132,7 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
                       name="username"
                       className="username-input"
                       ref={usernameRef}
+                      data-testid="username-input"
                     />
                   </Form.Group>
                   <Form.Group controlId="formBasicPassword">
@@ -138,14 +142,15 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
                       name="password"
                       className="password-input"
                       ref={passwordRef}
+                      data-testid="password-input" 
                     />
                   </Form.Group>
                   <br />
-                  <Button type="submit" variant="primary" className="login-btn" ref={loginButtonRef}>
+                  <Button type="submit" variant="primary" className="login-btn" data-testid="login-button" ref={loginButtonRef}>
                     Login
                   </Button>
                   {withoutUserLoginEnable && (
-                    <Button type="button" variant="link" className="login-btn" onClick={handleWithoutLogin}>
+                    <Button type="button" variant="link" className="login-btn" data-testid="login-button-no-account" onClick={handleWithoutLogin}>
                       Kein Account?
                     </Button>
                   )}
