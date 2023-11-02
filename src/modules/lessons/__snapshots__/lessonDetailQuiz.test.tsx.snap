@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuizComponent should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="card-title h5"
+  >
+    Was ist die Hauptstadt von Frankreich?
+  </div>
+  <form
+    class=""
+  >
+    <div
+      class="mb-3"
+    >
+      <div
+        class="form-check"
+      >
+        <input
+          class="form-check-input"
+          id="option-0"
+          name="quizOption"
+          type="radio"
+          value="Berlin"
+        />
+        <label
+          class="form-check-label"
+          for="option-0"
+          title=""
+        >
+          Berlin
+        </label>
+      </div>
+    </div>
+    <div
+      class="mb-3"
+    >
+      <div
+        class="form-check"
+      >
+        <input
+          class="form-check-input"
+          id="option-1"
+          name="quizOption"
+          type="radio"
+          value="Paris"
+        />
+        <label
+          class="form-check-label"
+          for="option-1"
+          title=""
+        >
+          Paris
+        </label>
+      </div>
+    </div>
+    <div
+      class="mb-3"
+    >
+      <div
+        class="form-check"
+      >
+        <input
+          class="form-check-input"
+          id="option-2"
+          name="quizOption"
+          type="radio"
+          value="Rom"
+        />
+        <label
+          class="form-check-label"
+          for="option-2"
+          title=""
+        >
+          Rom
+        </label>
+      </div>
+    </div>
+    <button
+      class="btn btn-primary"
+      type="button"
+    >
+      Überprüfen
+    </button>
+  </form>
+  <br />
+  <br />
+</DocumentFragment>
+`;

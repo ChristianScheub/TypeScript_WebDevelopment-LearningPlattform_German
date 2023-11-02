@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Card, Badge } from 'react-bootstrap';
 import { MdCheckCircle } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import './lessonOverview.css'; // Import the CSS file
+import './lessonOverview.css';
 import NavbarComponent from '../../base/navbarComponent';
 
 interface LessonProps {
@@ -25,10 +25,6 @@ const LessonOverview: React.FC<LessonOverviewProps> = ({ lessons, title }) => {
   const completed = JSON.parse(localStorage.getItem('completedLessons') || '[]');
   const navigate = useNavigate();
 
-  const handleNavigation = (id: string) => {
-    navigate(`/${id}`);
-  };
-
   return (
     <div>
       <NavbarComponent disabled={false} />
@@ -37,11 +33,11 @@ const LessonOverview: React.FC<LessonOverviewProps> = ({ lessons, title }) => {
         <Row xs={1} md={2} lg={3} className="g-4">
           {lessons.map((lesson) => (
             <Col key={lesson.id}>
-              <div onClick={() => handleNavigation(lesson.id)} className="lesson-link">
+              <div onClick={() => navigate('/'+lesson.id)} className="lesson-link"  data-testid={`lesson-link-${lesson.id}`}>
                 <Card className="lesson-card">
                   <Card.Body>
                     <Card.Title>
-                      {lesson.title} {completed.includes(lesson.id) && <MdCheckCircle color="green" />}
+                      {lesson.title} {completed.includes(lesson.id) && <MdCheckCircle data-testid="check-icon" color="green" />}
                     </Card.Title>
                     <Card.Text>{lesson.description}</Card.Text>
                   </Card.Body>

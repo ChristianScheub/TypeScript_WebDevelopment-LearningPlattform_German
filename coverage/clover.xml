@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1698897117295" clover="3.2.0">
+  <project timestamp="1698897117295" name="All files">
+    <metrics statements="14" coveredstatements="14" conditionals="6" coveredconditionals="5" methods="6" coveredmethods="6" elements="26" coveredelements="25" complexity="0" loc="14" ncloc="14" packages="3" files="4" classes="4"/>
+    <package name="base">
+      <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <file name="navbarComponent.tsx" path="C:\Users\chris\Documents\Develope\Repos\Lernplattform_Web\LearnPlattform_WebNew\LearnPlattform_WebDevelopment\src\base\navbarComponent.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="16" count="295" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="33" count="20" type="stmt"/>
+        <line num="34" count="20" type="stmt"/>
+      </file>
+    </package>
+    <package name="modules.app_configuration">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="app_texts.ts" path="C:\Users\chris\Documents\Develope\Repos\Lernplattform_Web\LearnPlattform_WebNew\LearnPlattform_WebDevelopment\src\modules\app_configuration\app_texts.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="list_lessons.ts" path="C:\Users\chris\Documents\Develope\Repos\Lernplattform_Web\LearnPlattform_WebNew\LearnPlattform_WebDevelopment\src\modules\app_configuration\list_lessons.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="modules.lessons">
+      <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <file name="lessonOverview.tsx" path="C:\Users\chris\Documents\Develope\Repos\Lernplattform_Web\LearnPlattform_WebNew\LearnPlattform_WebDevelopment\src\modules\lessons\lessonOverview.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+        <line num="35" count="10" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
