@@ -7,7 +7,6 @@ import NavbarComponent from '../../base/navbarComponent';
 import userAccountsList from '../app_configuration/accountList';
 import {
   getProgressByCategory,
-  xpValueOfCompletedLessonInCategory,
   getProgressByCategoryIn1000
 } from "./categoryProgress";
 

@@ -2,10 +2,11 @@
 
 Last Edit: 11.2023 <br>
 Language: Typescript React Web App<br>
-Azure Web-App: https://proud-pebble-024572f10.3.azurestaticapps.net/
+Azure Web-App: https://proud-pebble-024572f10.3.azurestaticapps.net/<br>
+Azure Web App with Google Domain: https://www.webentwicklung-lernen.de/
 
 This is a Typescript React app designed to teach the basics of web development. It runs entirely locally on the client and does not require a backend, just a server on which the web app is hosted. This is intended as a companion to my web development lecture, so students will receive an account as part of this to review the material afterwards.
-<br>Please note that I use an Azure Pipline to synchronize my Azure Dev Ops repo, which is why there are a lot of commits and not different branches.
+<br>Please note that I use an Azure Pipline to synchronize my Azure Dev Ops repo, which is why there are a lot of commits and no different branches.
 
 <br><br><br>
 
@@ -14,10 +15,13 @@ Das ist eine Typescript React App, welche die Grundlagen der Webentwicklung verm
 <br>Bitte beachten Sie, dass ich eine Azure Pipline verwende um mein Azure Dev Ops Repo zu synchronisiere, weshalb es sehr viele Commits gibt und keine verschiedenen Branches.
 
 ## Testing
-Due to problems of the JavaScript testing framework Jest used here with the monacco-editor not all parts are covered by the tests.
+The Jest testing framework is used for testing.
+The tests here are always written in Typescript.
+
+Due to problems of the JavaScript testing framework Jest with the monaco-editor not all parts are covered by the tests.
 
 
----------------------------|---------|----------|---------|---------|---------------------
+
 File                       | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s   
 ---------------------------|---------|----------|---------|---------|---------------------
 All files                  |   91.52 |    74.76 |   83.33 |   92.09 |                     
@@ -41,7 +45,19 @@ All files                  |   91.52 |    74.76 |   83.33 |   92.09 |
   sucessAnimation.tsx      |   93.75 |    83.33 |     100 |   92.85 | 39                         
  modules/login             |   88.88 |     90.9 |   76.92 |   90.38 |                            
   passwordDialog.tsx       |   88.88 |     90.9 |   76.92 |   90.38 | 45,68,86-87,98             
----------------------------|---------|----------|---------|---------|--------------------- 
+
+## Architecture
+There are four different configuration files in the app_configuration folder. These allow you to configure the learning platform as you wish. 
+These are mainly edited by the Learning Platform Creator. 
+
+- `accountList`: Contains a list of the available accounts of the learning platform. (The ID is automatically generated for the user)
+- `app_settings`: Contains settings such as which links must be replaced in the code preview function
+- `app_texts`: Contains texts such as the title of the learning platform, the description, imprint text, data protection text etc.
+- `list_lessons`: Contains the individual learning units with their quizzes, code exercises etc.
+
+![Plattform Creator Architecture](/PlattformCreatorArchitecture.png)
+This architecture diagram shows how the Creator works. Bearer tokens are used for authentication and there are numerous other security mechanisms such as escaping, restricted IP access, prepared SQL statements, maximum login attempts and so on. However, the source code of the Learning Platform Creator is not open source and this diagram is only a rough and incomplete architecture.
+
 
 
 ## Available Scripts
@@ -60,11 +76,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -72,5 +83,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
