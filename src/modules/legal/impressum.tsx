@@ -3,7 +3,8 @@ import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { MdArrowBack } from 'react-icons/md';
 import NavbarComponent from '../../base/navbarComponent';
-import { impressum_text} from '../app_configuration/app_texts';
+import { impressum_text } from '../app_configuration/app_texts';
+import CodeToTextParser from './codeToTextParser';
 
 
 
@@ -16,36 +17,20 @@ interface ImpressumProps {
 const Impressum: React.FC<ImpressumProps> = ({ passwordEntered }) => {
   const navigate = useNavigate();
 
-
-  const handleBackClick = () => {
-    navigate(-1);
-  };
-
   return (
     <div>
-      <NavbarComponent disabled={!passwordEntered}/>
-
-
+      <NavbarComponent disabled={!passwordEntered} />
       <div className="after-login-container">
-
         <Card className="mb-3">
           <Card.Header as="h2">
-            <MdArrowBack style={{ cursor: 'pointer' }} onClick={handleBackClick} />
+            <MdArrowBack style={{ cursor: 'pointer' }} onClick={() => navigate(-1)} data-testid="backButton" />
             Impressum
           </Card.Header>
           <Card.Body>
-            <Card.Text>
-            {impressum_text.split('<br />').map((text, index) => (
-                <React.Fragment key={index}>
-                  {text}
-                  <br />
-                </React.Fragment>
-              ))}
-            </Card.Text>
+            <CodeToTextParser code={impressum_text} />
           </Card.Body>
         </Card>
       </div>
-
     </div>
   );
 };
