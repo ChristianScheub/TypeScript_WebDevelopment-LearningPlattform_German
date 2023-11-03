@@ -136,6 +136,7 @@ const CookieConsentBanner: React.FC = () => {
                       variant="primary"
                       onClick={onAccept}
                       style={{ margin: "0 0.5vw" }}
+                      data-testid="accept-all-button" 
                     >
                       {isGerman ? "Alle akzeptieren" : "Accept All"}
                     </Button>
@@ -143,6 +144,7 @@ const CookieConsentBanner: React.FC = () => {
                       variant="outline-danger"
                       onClick={onDeclineAll}
                       style={{ margin: "0 0.5vw" }}
+                      data-testid="decline-all-button"
                     >
                       {isGerman ? "Alle ablehnen" : "Decline All"}
                     </Button>
