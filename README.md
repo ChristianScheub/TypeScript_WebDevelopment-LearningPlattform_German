@@ -16,9 +16,41 @@ Das ist eine Typescript React App, welche die Grundlagen der Webentwicklung verm
 ## Testing
 Due to problems of the JavaScript testing framework Jest used here with the monacco-editor not all parts are covered by the tests.
 
+
+---------------------------|---------|----------|---------|---------|---------------------
+File                       | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s   
+---------------------------|---------|----------|---------|---------|---------------------
+All files                  |   91.52 |    74.76 |   83.33 |   92.09 |                     
+ base                      |   82.35 |       50 |   57.14 |   81.25 |                     
+  footerComponent.tsx      |      70 |       50 |      25 |      70 | 11,44-48            
+  navbarComponent.tsx      |     100 |       50 |     100 |     100 | 42                  
+ modules/app_configuration |     100 |      100 |     100 |     100 |                            
+  app_settings.ts          |     100 |      100 |     100 |     100 |                            
+  app_texts.ts             |     100 |      100 |     100 |     100 |                            
+  list_lessons.ts          |     100 |      100 |     100 |     100 |                            
+ modules/dashboard         |     100 |    78.57 |     100 |     100 |                            
+  categoryProgress.ts      |     100 |    78.57 |     100 |     100 | 11,86,90                   
+ modules/legal             |   87.83 |    70.45 |   72.22 |   90.27 |                            
+  codeToTextParser.tsx     |     100 |      100 |     100 |     100 |                            
+  cookieConsentBanner.tsx  |   79.54 |    65.78 |   54.54 |   83.33 | 23,45,50,56,198-217        
+  datenschutz.tsx          |     100 |      100 |     100 |     100 |                            
+  impressum.tsx            |     100 |      100 |     100 |     100 |                            
+ modules/lessons           |    93.1 |    69.56 |     100 |   92.59 |                            
+  lessonDetailQuiz.tsx     |   85.71 |    53.84 |     100 |   85.71 | 26                         
+  lessonOverview.tsx       |     100 |      100 |     100 |     100 |                     
+  sucessAnimation.tsx      |   93.75 |    83.33 |     100 |   92.85 | 39                         
+ modules/login             |   88.88 |     90.9 |   76.92 |   90.38 |                            
+  passwordDialog.tsx       |   88.88 |     90.9 |   76.92 |   90.38 | 45,68,86-87,98             
+---------------------------|---------|----------|---------|---------|--------------------- 
+
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm test`
+
+Runs all tests.
 
 ### `npm start`
 

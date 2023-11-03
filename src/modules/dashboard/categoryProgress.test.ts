@@ -1,7 +1,7 @@
 import { getProgressByCategory, getProgressByCategoryIn1000, xpValueOfCompletedLessonInCategory, saveCompletedLesson } from './categoryProgress';
 
 jest.mock('../app_configuration/list_lessons', () => ({
-    __esModule: true,  // this property makes it work
+    __esModule: true,
     default: [
         { id: '1', category: 'Math' },
         { id: '2', category: 'Math' },
