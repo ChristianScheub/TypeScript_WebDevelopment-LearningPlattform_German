@@ -55,7 +55,7 @@ These are mainly edited by the Learning Platform Creator.
 - `app_texts`: Contains texts such as the title of the learning platform, the description, imprint text, data protection text etc.
 - `list_lessons`: Contains the individual learning units with their quizzes, code exercises etc.
 
-![Plattform Creator Architecture](/PlattformCreatorArchitecture.png)
+![Plattform Creator Architecture](/PlattformCreatorArchitecture_dark.png)
 This architecture diagram shows how the Creator works. Bearer tokens are used for authentication and there are numerous other security mechanisms such as escaping, restricted IP access, prepared SQL statements, maximum login attempts and so on. However, the source code of the Learning Platform Creator is not open source and this diagram is only a rough and incomplete architecture.
 
 
