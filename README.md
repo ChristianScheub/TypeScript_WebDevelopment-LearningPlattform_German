@@ -58,8 +58,6 @@ These are mainly edited by the Learning Platform Creator.
 ![Plattform Creator Architecture](/PlattformCreatorArchitecture_dark.png)
 This architecture diagram shows how the Creator works. Bearer tokens are used for authentication and there are numerous other security mechanisms such as escaping, restricted IP access, prepared SQL statements, maximum login attempts and so on. However, the source code of the Learning Platform Creator is not open source and this diagram is only a rough and incomplete architecture.
 
-
-
 ## Available Scripts
 
 In the project directory, you can run:
