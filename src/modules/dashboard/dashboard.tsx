@@ -3,7 +3,6 @@ import { Card, ProgressBar } from 'react-bootstrap';
 import lessonsList from '../app_configuration/list_lessons';
 import { MdArrowBack } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import NavbarComponent from '../../base/navbarComponent';
 import userAccountsList from '../app_configuration/accountList';
 import {
   getProgressByCategory,
@@ -33,8 +32,6 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
-      <NavbarComponent disabled={false} />
-
       <div className="after-login-container">
         {currentUserAccount && (
           <Card style={{ width: '100vw', top: '2vw' }}>

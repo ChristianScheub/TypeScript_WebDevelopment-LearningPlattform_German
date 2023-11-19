@@ -1,29 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import FooterComponent from '../../base/footerComponent';
 import './passwordDialog.css';
-import NavbarComponent from '../../base/navbarComponent';
 import { MD5 } from 'crypto-js';
 import lessonsList from '../app_configuration/list_lessons';
+import userAccountsList from '../app_configuration/accountList';
 import { welcome_headline, welcome_description } from '../app_configuration/app_texts';
 import { withoutUserLoginName,withoutUserLoginPW } from '../app_configuration/app_settings';
 
-interface UserAccount {
-  id: string;
-  idToken: string;
-  userName: string;
-  password: string;
-  description: string;
-  licenseDuration: string;
-}
 
 interface PasswordDialogProps {
   onPasswordEntered: () => void;
-  userAccountsList: UserAccount[];
 }
 
-const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, userAccountsList }) => {
+const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered }) => {
   const [wrongAttempts, setWrongAttempts] = useState(0);
   const [remainingTime, setRemainingTime] = useState(0);
   const [isDialogVisible, setIsDialogVisible] = useState(true);
@@ -112,7 +102,6 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
 
   return (
     <div>
-      <NavbarComponent disabled={true} />
       <div className="auth-container">
         <div className="description" style={{ textAlign: 'left' }}>
           <h3>{welcome_headline}</h3>
@@ -168,7 +157,6 @@ const PasswordDialog: React.FC<PasswordDialogProps> = ({ onPasswordEntered, user
             </Card>
           </div>
         )}
-        <FooterComponent />
       </div>
     </div>
   );

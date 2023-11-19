@@ -6,15 +6,12 @@ import userEvent from '@testing-library/user-event';
 import { welcome_headline } from '../app_configuration/app_texts';
 
 
-const mockUserAccountsList =
-    [{ "id": "1", "idToken": "generateIdToken()", "userName": "1cb0c78fef6239036aca221239188f4d", "password": "bc15f308b068911ccc0ac032af7ef9d4", "description": "Willkommen zur Lernplattform", "licenseDuration": "2025-07-15" }, { "id": "2", "idToken": "generateIdToken()", "userName": "f8bf38d5e62d8d22eb344668d430f717", "password": "904723dd47b617271e22572458e3eb01", "description": "Mock Account. Dies ist nur bis zu dem 15.07.2023 noch möglich.", "licenseDuration": "2023-07-15" }, { "id": "3", "idToken": "generateIdToken()", "userName": "4660e986d04a68b5de17fd26b48f54e0", "password": "54043e75620557ad78c5894b8fc78096", "description": "Dies ist ein Mock Account.", "licenseDuration": "2024-01-01" }];
-
 describe('Password Dialog Tests', () => {
 
     test('renders without crashing', () => {
         render(
             <Router>
-                <PasswordDialog onPasswordEntered={() => { }} userAccountsList={mockUserAccountsList} />
+                <PasswordDialog onPasswordEntered={() => { }} />
             </Router>
         );
     });
@@ -22,7 +19,7 @@ describe('Password Dialog Tests', () => {
     test('renders with config texts', () => {
         render(
             <Router>
-                <PasswordDialog onPasswordEntered={() => { }} userAccountsList={mockUserAccountsList} />
+                <PasswordDialog onPasswordEntered={() => { }} />
             </Router>
         );
         expect(screen.getByText(welcome_headline)).toBeInTheDocument();
@@ -30,15 +27,14 @@ describe('Password Dialog Tests', () => {
 
     test('handles login with correct credentials', async () => {
         const onPasswordEntered = jest.fn();
-
         render(
             <Router>
-                <PasswordDialog onPasswordEntered={onPasswordEntered} userAccountsList={mockUserAccountsList} />
+                <PasswordDialog onPasswordEntered={onPasswordEntered} />
             </Router>
         );
 
-        await userEvent.type(screen.getByTestId('username-input'), 'MockAccount_Name_Valid');
-        await userEvent.type(screen.getByTestId('password-input'), 'MockAccount_Passwort_Valid');
+        await userEvent.type(screen.getByTestId('username-input'), 'noUserAccount');
+        await userEvent.type(screen.getByTestId('password-input'), 'noUserAccountPW');
 
         fireEvent.click(screen.getByTestId('login-button'));
         expect(onPasswordEntered).toHaveBeenCalled();
@@ -49,12 +45,12 @@ describe('Password Dialog Tests', () => {
 
         render(
             <Router>
-                <PasswordDialog onPasswordEntered={jest.fn()} userAccountsList={mockUserAccountsList} />
+                <PasswordDialog onPasswordEntered={jest.fn()} />
             </Router>
         );
 
-        await userEvent.type(screen.getByTestId('username-input'), 'MockAccount_Name_Abgelaufen');
-        await userEvent.type(screen.getByTestId('password-input'), 'MockAccount_Passwort_Abgelaufen');
+        await userEvent.type(screen.getByTestId('username-input'), 'testAccount3');
+        await userEvent.type(screen.getByTestId('password-input'), 'testAccount3_PW');
 
         fireEvent.click(screen.getByTestId('login-button'));
 
@@ -65,9 +61,10 @@ describe('Password Dialog Tests', () => {
     test('handles login with wrong credentials', async () => {
         const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
 
+
         render(
             <Router>
-                <PasswordDialog onPasswordEntered={jest.fn()} userAccountsList={mockUserAccountsList} />
+                <PasswordDialog onPasswordEntered={jest.fn()} />
             </Router>
         );
 
@@ -82,10 +79,10 @@ describe('Password Dialog Tests', () => {
 
     test('handles 3 logins with wrong credentials', async () => {
         const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
-
+        
         render(
             <Router>
-                <PasswordDialog onPasswordEntered={jest.fn()} userAccountsList={mockUserAccountsList} />
+                <PasswordDialog onPasswordEntered={jest.fn()} />
             </Router>
         );
 
@@ -105,7 +102,7 @@ describe('Password Dialog Tests', () => {
 
         render(
             <Router>
-                <PasswordDialog onPasswordEntered={onPasswordEntered} userAccountsList={mockUserAccountsList} />
+                <PasswordDialog onPasswordEntered={onPasswordEntered} />
             </Router>
         );
 

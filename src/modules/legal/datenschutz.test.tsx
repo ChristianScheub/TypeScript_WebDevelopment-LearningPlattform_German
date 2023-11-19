@@ -19,7 +19,7 @@ describe('Datenschutz Card Tests', () => {
     it('renders without crashing', () => {
         render(
         <Router>
-            <Datenschutz passwordEntered={true} />
+            <Datenschutz />
         </Router>
         );
         expect(screen.getByText('Unsere Datenschutzerklärung:')).toBeInTheDocument();
@@ -28,7 +28,7 @@ describe('Datenschutz Card Tests', () => {
     it('renders with config texts', () => {
         render(
             <Router>
-                <Datenschutz passwordEntered={true} />
+                <Datenschutz />
             </Router>
             );
         const normalText = screen.getByText('Mocked Datenschutz Text');
@@ -42,7 +42,7 @@ describe('Datenschutz Card Tests', () => {
         
         render(
             <Router>
-                <Datenschutz passwordEntered={true} />
+                <Datenschutz />
             </Router>
         );
         

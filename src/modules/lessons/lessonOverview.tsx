@@ -3,7 +3,6 @@ import { Row, Col, Card, Badge } from 'react-bootstrap';
 import { MdCheckCircle } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import './lessonOverview.css';
-import NavbarComponent from '../../base/navbarComponent';
 
 interface LessonProps {
   lesson: {
@@ -27,7 +26,6 @@ const LessonOverview: React.FC<LessonOverviewProps> = ({ lessons, title }) => {
 
   return (
     <div>
-      <NavbarComponent disabled={false} />
       <div className="lesson-overview-container after-login-container">
         <h2 className="lesson-overview-title">{title}</h2>
         <Row xs={1} md={2} lg={3} className="g-4">

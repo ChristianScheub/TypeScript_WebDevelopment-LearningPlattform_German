@@ -55,7 +55,22 @@ These are mainly edited by the Learning Platform Creator.
 - `app_texts`: Contains texts such as the title of the learning platform, the description, imprint text, data protection text etc.
 - `list_lessons`: Contains the individual learning units with their quizzes, code exercises etc.
 
-![Plattform Creator Architecture](/PlattformCreatorArchitecture_dark.png)
+In the application, particular focus was placed on avoiding redundant code and that components are solely responsible for their own properties.
+
+For example, categoryProgress is responsible for storing, analyzing and managing the progress of individual lessons. 
+This is used for example by the dashboard (to display), the congratulations overlay (to display the XP) and the lessons (to save).
+
+Most components are based on configurations from the configuration files such as app_texts.ts. The configuration files are marked green in the image.
+This is particularly evident in the footer, imprint and data protection components.
+You can also see this strongly in the lessons, as most components take them into account. Be it directly like the navbar (for the headings of the categories) and the dashboard but also indirectly like the Lesson and LessonOverview components which receive it through the LessonsRoutes.
+
+Since the entire web application must be functional without an additional backend due to data protection requirements but also simply cost efficiency, there is no separate input validation of the data, API handler, token validation, etc. 
+![Learning Platform Components Architecture](/LearnPlattformComponentsArchitecture.png)
+
+### Learning Platform Creator
+With the help of the Learnplattform Creator, it is possible to create and manage your own learning platform via a full-stack application.
+ The learning platforms are then hosted using Azure as an Azure Web Static App and stored in a Dev Ops Repo. With the help of the learning platform creator, the user is not occupied with such technical things and simply sees the beautiful UI for editing and the rest happens in the background ;) 
+![Platform  Creator Architecture](/PlattformCreatorArchitecture_dark.png)
 This architecture diagram shows how the Creator works. Bearer tokens are used for authentication and there are numerous other security mechanisms such as escaping, restricted IP access, prepared SQL statements, maximum login attempts and so on. However, the source code of the Learning Platform Creator is not open source and this diagram is only a rough and incomplete architecture.
 
 ## Available Scripts

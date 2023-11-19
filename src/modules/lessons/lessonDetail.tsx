@@ -2,13 +2,13 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
 import { MdArrowBack, MdCheckCircle } from "react-icons/md";
-import NavbarComponent from "../../base/navbarComponent";
 import CongratulationsOverlay from "./sucessAnimation";
 import QuizComponent from "./lessonDetailQuiz";
 import CodeEditor from "./lesssonDetailCodeExercise";
 import CodeComparison from "./lessonDetailCodeComparison";
 import "./lessonDetail.css";
 import { saveCompletedLesson } from "../dashboard/categoryProgress";
+
 
 interface LessonProps {
   lesson: {
@@ -171,7 +171,6 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
           closeOverlay={() => setShowCongratulationsOverlay(null)}
         />
       )}
-      <NavbarComponent disabled={false} />
       <div className="after-login-container">
         <Card style={{ width: "100vw" }}>
           <Card.Header as="h2">

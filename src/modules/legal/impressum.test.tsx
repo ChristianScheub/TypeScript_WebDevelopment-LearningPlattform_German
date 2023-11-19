@@ -20,7 +20,7 @@ describe('Impressum Card Tests', () => {
     it('renders without crashing', () => {
         render(
             <Router>
-                <Impressum passwordEntered={true} />
+                <Impressum/>
             </Router>
         );
         expect(screen.getByText('Impressum')).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe('Impressum Card Tests', () => {
     it('renders with config texts', () => {
         render(
             <Router>
-                <Impressum passwordEntered={true} />
+                <Impressum/>
             </Router>
         );
         const normalText = screen.getByText('Mocked Impressum Text');
@@ -43,7 +43,7 @@ describe('Impressum Card Tests', () => {
         
         render(
             <Router>
-                <Impressum passwordEntered={true} />
+                <Impressum/>
             </Router>
         );
         

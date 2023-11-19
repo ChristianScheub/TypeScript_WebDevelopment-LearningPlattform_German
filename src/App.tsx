@@ -2,13 +2,10 @@ import Dashboard from './modules/dashboard/dashboard';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, useLocation, Route, useNavigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import Lesson from './modules/lessons/lessonDetail';
-import LessonOverview from './modules/lessons/lessonOverview';
 import FooterComponent from './base/footerComponent';
-import lessonsList from './modules/app_configuration/list_lessons';
-import userAccountsList from './modules/app_configuration/accountList';
-import { website_title} from './modules/app_configuration/app_texts';
-
+import { website_title } from './modules/app_configuration/app_texts';
+import NavbarComponent from './base/navbarComponent';
+import LessonsRoutes from './modules/lessons/lessonsRoutes';
 import Impressum from './modules/legal/impressum';
 import Datenschutz from './modules/legal/datenschutz';
 import CookieConsentBanner from './modules/legal/cookieConsentBanner';
@@ -29,7 +26,7 @@ const PasswordRedirect: React.FC<PasswordRedirectProps> = ({ passwordEntered }) 
       currentLocation.pathname !== '/impressum' &&
       currentLocation.pathname !== '/datenschutz'
     ) {
-      navigate('/password'); // Redirect to password page
+      navigate('/password');
     }
   }, [passwordEntered, navigate]);
 
@@ -37,53 +34,40 @@ const PasswordRedirect: React.FC<PasswordRedirectProps> = ({ passwordEntered }) 
 };
 
 const App: React.FC = () => {
-  const [showDashboard, setShowDashboard] = useState(false);
   const [passwordEntered, setPasswordEntered] = useState(false);
 
   const handlePasswordEntered = () => {
     setPasswordEntered(true);
   };
 
-  const hidePasswordDialog = () => {
-    setPasswordEntered(true);
-  };
 
   useEffect(() => {
-    document.title = website_title; // Set the website title dynamically
+    document.title = website_title;
   }, []);
 
   return (
     <Router>
       <div style={{ position: 'relative', minHeight: '100vh' }}>
+        <NavbarComponent disabled={!passwordEntered} />
+
         <PasswordRedirect passwordEntered={passwordEntered} />
         <Container className="custom-container" style={{ paddingBottom: '80px' }}>
           <main>
             <Routes>
               {passwordEntered && (
                 <>
-                  {lessonsList.map((lesson) => (
-                    <Route key={lesson.id} path={`/${lesson.id}`} element={<Lesson lesson={lesson} />} />
-                  ))}
-                  {lessonsList.map((lesson) => {
-                    const { id, category } = lesson;
-                    return (
-                      <Route
-                        key={id}
-                        path={`/${category.toLowerCase().replace(/ /g, '-')}`}
-                        element={<LessonOverview title={category} lessons={lessonsList.filter((item) => item.category === category)} />}
-                      />
-                    );
-                  })}
+                  <Route path="/*" element={<LessonsRoutes />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+
                 </>
               )}
-              <Route path="/impressum" element={<Impressum passwordEntered={passwordEntered} />} />
-              <Route path="/datenschutz" element={<Datenschutz passwordEntered={passwordEntered} />} />
+              <Route path="/impressum" element={<Impressum />} />
+              <Route path="/datenschutz" element={<Datenschutz />} />
               <Route
                 path="/password"
-                element={<PasswordDialog onPasswordEntered={handlePasswordEntered} userAccountsList={userAccountsList} />}
+                element={<PasswordDialog onPasswordEntered={handlePasswordEntered} />}
               />
 
-              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </main>
         </Container>
