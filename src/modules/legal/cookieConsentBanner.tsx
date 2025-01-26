@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import "./cookieConsentBanner.css";
+import { featureFlag_DeployMobile } from "../app_configuration/featureFlags";
 
 const CookieConsentBanner: React.FC = () => {
   const [isCookieAccepted, setIsCookieAccepted] = useState<boolean>(false);
@@ -13,6 +14,9 @@ const CookieConsentBanner: React.FC = () => {
   const [isGerman, setIsGerman] = useState<boolean>(false);
 
   useEffect(() => {
+    if(featureFlag_DeployMobile){
+      onAccept();
+    }
     const browserLanguage = navigator.language.toLowerCase();
     setIsGerman(browserLanguage.startsWith("de"));
     const currentPagePath = window.location.pathname;
@@ -21,6 +25,11 @@ const CookieConsentBanner: React.FC = () => {
       currentPagePath.includes("/datenschutz")
     ) {
       setIsBannerAllowed(false);
+    }
+    const progressSaving = localStorage.getItem("progress-saving-enabled");
+    const usernameSaving = localStorage.getItem("username-saving-enabled");
+    if (progressSaving || usernameSaving) {
+      setIsCookieAccepted(true);
     }
   }, []);
 
@@ -73,7 +82,9 @@ const CookieConsentBanner: React.FC = () => {
       {isBannerAllowed && (
         <div>
           {isPopupVisible && (
-            <Modal show={true} centered>
+            <div>
+
+            <Modal show={true} centered >
               <Modal.Header>
                 <Modal.Title>Lokale Daten Speicherung</Modal.Title>
               </Modal.Header>
@@ -161,6 +172,7 @@ const CookieConsentBanner: React.FC = () => {
                 </div>
               </Modal.Body>
             </Modal>
+            </div>
           )}
           {!isPopupVisible && (
             <Modal show={true} centered>

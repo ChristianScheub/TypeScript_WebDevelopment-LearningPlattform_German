@@ -27,7 +27,7 @@
 background: linear-gradient(to bottom, #84fab0, #8fd3f4);
 width: 100vw;
 height: 94vh;
-padding-top: 5vw;
+padding-top: 10vw;
 padding-left: 5vw;
 padding-right: 5vw;
 overflow: auto;
@@ -38,13 +38,17 @@ flex-wrap: wrap;
 justify-content: space-between;
 }
 
-@media (max-width: 767px) { /* Smartphone, wie iPhone XR */
+@media (max-width: 767px) {
   .after-login-container {
     max-width: 100%;
     overflow-x: hidden;
     height: 100vh;
     width: 100vw;
-    padding-top:30vw;
+    padding-top:17vh;
     padding-bottom:30vw;
+  }
+  .after-login-container p{
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }

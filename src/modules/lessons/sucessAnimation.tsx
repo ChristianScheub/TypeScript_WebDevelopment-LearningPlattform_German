@@ -55,7 +55,7 @@ const CongratulationsOverlay: React.FC<CongratulationsOverlayProps> = ({
           {`${currentCompletedXP}/${currentTotalXP} XP schon erreicht in dem Kapitel ${lessonCategory}!`}
         </p>
         <button className="closeButton" onClick={closeOverlay}>
-          &times;
+          x
         </button>
       </div>
     </div>

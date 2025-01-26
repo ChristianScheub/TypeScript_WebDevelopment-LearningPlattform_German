@@ -10,6 +10,8 @@ import Impressum from './modules/legal/impressum';
 import Datenschutz from './modules/legal/datenschutz';
 import CookieConsentBanner from './modules/legal/cookieConsentBanner';
 import PasswordDialog from './modules/login/passwordDialog';
+import { AdManager } from "./modules/Ads/AdManager";
+import { setBackForwardNavigationGestures } from 'capacitor-plugin-ios-webview-configurator';
 
 export interface PasswordRedirectProps {
   passwordEntered: boolean;
@@ -43,9 +45,14 @@ const App: React.FC = () => {
 
   useEffect(() => {
     document.title = website_title;
+    setBackForwardNavigationGestures(true)
+
+
   }, []);
 
   return (
+    <>
+    <AdManager />
     <Router>
       <div style={{ position: 'relative', minHeight: '100vh' }}>
         <NavbarComponent disabled={!passwordEntered} />
@@ -75,6 +82,7 @@ const App: React.FC = () => {
         <FooterComponent />
       </div>
     </Router>
+    </>
   );
 };
 

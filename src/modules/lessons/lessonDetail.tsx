@@ -8,7 +8,8 @@ import CodeEditor from "./lesssonDetailCodeExercise";
 import CodeComparison from "./lessonDetailCodeComparison";
 import "./lessonDetail.css";
 import { saveCompletedLesson } from "../dashboard/categoryProgress";
-
+import { featureFlag_DeployMobile } from "../app_configuration/featureFlags";
+import { incrementLessonCounterAds } from "../Ads/Counter";
 
 interface LessonProps {
   lesson: {
@@ -34,14 +35,20 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
   const [similarity, setSimilarity] = useState<number | null>(null);
   const [code, setCode] = useState("");
 
-  const [showCongratulationsOverlay, setShowCongratulationsOverlay] = useState<boolean | null>(null);
+  const [showCongratulationsOverlay, setShowCongratulationsOverlay] = useState<
+    boolean | null
+  >(null);
   const [showCodeSolution, setShowCodeSolution] = useState(false);
 
   const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("completedLessons") || "[]").includes(lesson.id)) {
+    if (
+      JSON.parse(localStorage.getItem("completedLessons") || "[]").includes(
+        lesson.id
+      )
+    ) {
       setIsAnswerCorrect(true);
     }
   }, [lesson.id]);
@@ -113,11 +120,11 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
     []
   );
 
-
   const courseDone = useCallback(() => {
     saveCompletedLesson(lesson.id)();
     setIsAnswerCorrect(true);
     setShowCongratulationsOverlay(true);
+    incrementLessonCounterAds();
   }, [lesson.id]);
 
   const checkQuizAnswer = useCallback(() => {
@@ -127,8 +134,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
       const selectedOption = formData.get("quizOption") as string;
       if (selectedOption === lesson.quizSolution) {
         courseDone();
-      }
-      else {
+      } else {
         setShowCongratulationsOverlay(false);
       }
     }
@@ -155,13 +161,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
       setIsAnswerCorrect(false);
     }
     setShowCodeSolution(true);
-  }, [
-    code,
-    lesson.correctAnswer,
-    courseDone,
-    calculateSimilarity,
-  ]);
-
+  }, [code, lesson.correctAnswer, courseDone, calculateSimilarity]);
 
   return (
     <div>
@@ -171,7 +171,13 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
           closeOverlay={() => setShowCongratulationsOverlay(null)}
         />
       )}
-      <div className="after-login-container">
+      <div
+        className="after-login-container"
+        style={{
+          paddingLeft: featureFlag_DeployMobile ? "2vw" : undefined,
+          paddingRight: featureFlag_DeployMobile ? "2vw" : undefined,
+        }}
+      >
         <Card style={{ width: "100vw" }}>
           <Card.Header as="h2">
             <MdArrowBack
@@ -186,7 +192,7 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
               />
             )}
           </Card.Header>
-          <Card.Body style={{ height: "auto" }}>
+          <div style={{ height: "auto" }}>
             <Card.Text>{parseContentFunction(lesson.content)}</Card.Text>
             {lesson.exercise !== "" && (
               <>
@@ -217,28 +223,32 @@ const Lesson: React.FC<LessonProps> = ({ lesson }) => {
               lesson.quizOptions === "" &&
               localStorage.getItem("progress-saving-enabled") === "true" && (
                 <div>
-                  {isAnswerCorrect === false ? (
-                    <Button
-                      id="successCodeLesson"
-                      variant="success"
-                      onClick={courseDoneWithoutExercise}
-                    >
-                      Abgeschlossen
-                    </Button>
-                  ) : (
-                    <MdArrowBack
-                      style={{
-                        cursor: "pointer",
-                        fontSize: "40px",
-                        backgroundColor: "#8BC34A",
-                        borderRadius: "5px",
-                      }}
-                      onClick={() => navigate(-1)}
-                    />
-                  )}
+                  <center>
+                    {!isAnswerCorrect ? (
+                      <Button
+                        id="successCodeLesson"
+                        variant="success"
+                        onClick={courseDoneWithoutExercise}
+                      >
+                        Abgeschlossen
+                      </Button>
+                    ) : (
+                      <MdArrowBack
+                        style={{
+                          cursor: "pointer",
+                          fontSize: "40px",
+                          backgroundColor: "#8BC34A",
+                          borderRadius: "5px",
+                        }}
+                        onClick={() => navigate(-1)}
+                      />
+                    )}
+                    <br />
+                    <br />
+                  </center>
                 </div>
               )}
-          </Card.Body>
+          </div>
         </Card>
         <br />
         <br />

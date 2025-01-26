@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { Card, Button } from 'react-bootstrap';
 import MonacoEditor from 'react-monaco-editor';
 import { possibleLinksToReplace } from "../app_configuration/app_settings";
+import { featureFlag_DeployMobile } from "../app_configuration/featureFlags";
 
 
 interface ExerciseComponentProps {
@@ -17,12 +19,12 @@ interface ExerciseComponentProps {
 }
 
 function removeHrefLinks(html: string): string {
-    const linkRegex = possibleLinksToReplace.map((link) =>
-      link.replace(".", "\\.")
-    );
-    const regex = new RegExp(`href="(#[^"]*|${linkRegex.join("|")})"`, "g");
-    return html.replace(regex, "");
-  }
+  const linkRegex = possibleLinksToReplace.map((link) =>
+    link.replace(".", "\\.")
+  );
+  const regex = new RegExp(`href="(#[^"]*|${linkRegex.join("|")})"`, "g");
+  return html.replace(regex, "");
+}
 
 const CodeEditor: React.FC<ExerciseComponentProps> = ({
   lesson,
@@ -32,11 +34,10 @@ const CodeEditor: React.FC<ExerciseComponentProps> = ({
   handleCodeChange,
   checkAnswerCode,
 }) => {
-  if (lesson.exercise===""&&codeSolution==="") {
+  if (lesson.exercise === "" && codeSolution === "") {
     return null;
   }
 
-  
   return (
     <>
       {showSolution && (
@@ -48,7 +49,10 @@ const CodeEditor: React.FC<ExerciseComponentProps> = ({
             title="Embedded Content"
             srcDoc={removeHrefLinks(codeSolution)}
             sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-            style={{ width: '70vw' }}
+            style={{
+              width: '90vw',
+              height: featureFlag_DeployMobile ? '30vh' : undefined,
+            }}
             onLoad={(event) => {
               const iframe = event.target as HTMLIFrameElement;
               if (iframe.contentWindow?.document.body) {
@@ -64,7 +68,7 @@ const CodeEditor: React.FC<ExerciseComponentProps> = ({
       )}
       <br />
       <MonacoEditor
-        width="100%"
+        width="100vw"
         height="300px"
         language={lesson.language}
         theme="vs-dark"
@@ -75,6 +79,8 @@ const CodeEditor: React.FC<ExerciseComponentProps> = ({
       <Button variant="primary" onClick={checkAnswerCode}>
         Überprüfen
       </Button>
+      <br />
+      <br />
     </>
   );
 };

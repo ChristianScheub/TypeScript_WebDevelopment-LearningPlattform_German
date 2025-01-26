@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { footer_text} from '../modules/app_configuration/app_texts';
+import { featureFlag_DeployMobile } from '../modules/app_configuration/featureFlags';
 
 
 const FooterComponent: React.FC = () => {
@@ -33,6 +34,11 @@ const FooterComponent: React.FC = () => {
     height: '15vw',
     lineHeight: '6vw',
   };
+
+  //No Footer for App
+  if (featureFlag_DeployMobile) {
+    return null;
+  }
 
   return (
     <Container

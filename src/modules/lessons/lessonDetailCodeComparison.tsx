@@ -98,7 +98,7 @@ const CodeComparison: React.FC<CodeComparisonProps> = ({
   const formattedCorrectAnswer = formatCode(codeSolution, lessonLanguage);
   
   return (
-    <Card style={{ width: '100vw' }}>
+    <Card style={{ width: '100vw', marginTop: "5vw" }}>
       <Card.Header as="h2">Lösung</Card.Header>
       <Card.Body style={{ height: 'auto' }}>
         <div className={`alert ${isCorrect ? "alert-success" : "alert-danger"}`} role="alert">
