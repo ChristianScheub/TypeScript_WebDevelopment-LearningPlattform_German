@@ -12,6 +12,7 @@ import CookieConsentBanner from './modules/legal/cookieConsentBanner';
 import PasswordDialog from './modules/login/passwordDialog';
 import { AdManager } from "./modules/Ads/AdManager";
 import { setBackForwardNavigationGestures } from 'capacitor-plugin-ios-webview-configurator';
+import { makeStatusBarTransparent } from './modules/helper/statusBarUtils';
 
 export interface PasswordRedirectProps {
   passwordEntered: boolean;
@@ -45,7 +46,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     document.title = website_title;
-    setBackForwardNavigationGestures(true)
+    setBackForwardNavigationGestures(true);
+    makeStatusBarTransparent();
 
 
   }, []);

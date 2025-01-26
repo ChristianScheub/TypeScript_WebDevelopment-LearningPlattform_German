@@ -1,4 +1,4 @@
-const featureFlag_DeployMobile: boolean = false;
+const featureFlag_DeployMobile: boolean = true;
 
 const featureFlag_Debug_AllLogs: boolean = false; //Show all logs in the console
 const featureFlag_Debug_Log_infoRedux: boolean = false; //Show info logs of the setter in the console
